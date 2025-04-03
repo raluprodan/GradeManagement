@@ -2,7 +2,6 @@ package com.example.demoMPI;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -19,6 +18,7 @@ public class Student extends User {
     private String registryNumber;
     private Year year;
     private Class aClass;
+    private boolean activeYear;
 
     @ColumnDefault("STUDENT")
     private Role role;
