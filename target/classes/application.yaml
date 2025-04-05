@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/GradeManagement
+    username: postgres
+    password: 12qw12qw
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update #change this to update to no longer create and delete upon using the app///change to create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    #database-platform: org.hibernate.dialect.PostgreSQLDialect
