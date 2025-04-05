@@ -26,5 +26,7 @@ public class Grade {
     private Student assignee;
     private Date date;
     private int grade;
-    private Subject subject;
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 }
