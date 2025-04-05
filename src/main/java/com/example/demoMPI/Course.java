@@ -12,7 +12,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String professor;
+    @ManyToMany(mappedBy = "courses")
+    private List<Professor> professors;
     @ManyToMany(mappedBy = "courseList")
     private List<Student> students;
 }

@@ -13,8 +13,6 @@ import java.util.List;
 @Entity
 @Table(name = "students")
 public class Student extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String registryNumber;
     private YearOfClass year;

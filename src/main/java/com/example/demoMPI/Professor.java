@@ -3,7 +3,7 @@ package com.example.demoMPI;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -12,12 +12,13 @@ import org.hibernate.annotations.ColumnDefault;
 @Entity
 @Table(name = "professors")
 public class Professor extends User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String subject;
-    private boolean isFormMaster;
-
-    @ColumnDefault("PROFESSOR")
-    private Role role;
+    @ManyToMany
+    @JoinTable(
+            name = "professor_courses",
+            joinColumns = @JoinColumn(name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses;
+    @Enumerated(EnumType.STRING)
+    private Role role= Role.valueOf("PROFESSOR");
 }
