@@ -1,5 +1,7 @@
-package com.example.demoMPI;
+package com.example.demoMPI.controllers;
 
+import com.example.demoMPI.Student;
+import com.example.demoMPI.YearOfClass;
 import com.example.demoMPI.dtos.StudentDTO;
 import com.example.demoMPI.services.StudentService;
 import io.swagger.v3.oas.annotations.*;
