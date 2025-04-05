@@ -7,7 +7,6 @@ import org.hibernate.annotations.ColumnDefault;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
