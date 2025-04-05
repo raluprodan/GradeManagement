@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Year;
 import java.util.List;
 
 @RestController
@@ -22,11 +23,35 @@ public class StudentController {
         studentService.createStudent(studentdto);
     }
 
-    @Operation(summary = "Student operations", description="Search students")
+    @Operation(summary = "Get All Students")
     @GetMapping("/allStudents")
     public List<Student> getAllStudents(){
         return studentService.listStudents();
-
     }
+
+    @Operation(summary = "Search student by email")
+    @GetMapping("/studentByEmail")
+    public Student getStudentByEmail(@RequestParam String email){
+        return studentService.getStudentByEmail(email);
+    }
+
+    @Operation(summary = "Search student by year")
+    @GetMapping("/studentInYear")
+    public List<Student> getStudentsInYear(@RequestParam YearOfClass year){
+        return studentService.getStudentsInYear(year);
+    }
+
+    @Operation(summary = "Search student by last name")
+    @GetMapping("/studentByLastName")
+    public List<Student> getStudentsByLastname(@RequestParam String lastname){
+        return studentService.getStudentsByLastName(lastname);
+    }
+
+    @Operation(summary = "Search student by registry number")
+    @GetMapping("/studentByRegistryNumber")
+    public Student getStudentByRegistryNumber(@RequestParam String registryNumber){
+        return studentService.getStudentByRegistryNumber(registryNumber);
+    }
+
 
 }
