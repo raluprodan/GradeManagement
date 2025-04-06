@@ -25,7 +25,7 @@ public class Grade {
     @JoinColumn(name = "assignee_id")
     private Student assignee;
     private Date date;
-    private int grade;
+    private double grade;
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;

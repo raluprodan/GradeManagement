@@ -24,7 +24,7 @@ public class StudentService {
     private final StudentRepo studentRepo;
     public void createStudent(StudentDTO dto) {
         Student student=studentMapper.toStudent(dto);
-        System.out.println("Creating student with role: " + student.getRole());
+        //System.out.println("Creating student with role: " + student.getRole());
         studentRepo.save(student);
     }
     public List<Student> listStudents() {
