@@ -25,6 +25,8 @@ public class Student extends User {
     private List<Course> courseList;
     private boolean activeYear;
 
+
+
     @Enumerated(EnumType.STRING) // If Role is an enum
     private Role role= Role.valueOf("STUDENT");
 }

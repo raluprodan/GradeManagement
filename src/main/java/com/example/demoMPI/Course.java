@@ -16,5 +16,6 @@ public class Course {
     private List<Professor> professors;
     @ManyToMany(mappedBy = "courseList")
     private List<Student> students;
+
 }
 
