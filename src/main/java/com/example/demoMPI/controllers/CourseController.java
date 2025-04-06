@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,5 +20,11 @@ public class CourseController {
     @GetMapping("/getCourses")
     public void listCourses() {
         courseService.getAllCourses().forEach(System.out::println);
+    }
+
+    @Operation(summary="Get a students average on a course")
+    @GetMapping("/getAverage")
+    public void getAverage(@RequestParam long courseID,@RequestParam String registryNumber) {
+        courseService.calculateAverage(courseID,registryNumber);
     }
 }
