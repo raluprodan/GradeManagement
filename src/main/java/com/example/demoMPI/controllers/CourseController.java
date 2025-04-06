@@ -1,7 +1,10 @@
 package com.example.demoMPI.controllers;
 
+import com.example.demoMPI.services.CourseService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,4 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Tag(name="Grades",description="Just Grades")
 public class CourseController {
+    private final CourseService courseService;
+
+    @Operation(summary="Get all courses")
+    @GetMapping("/getCourses")
+    public void listCourses() {
+        courseService.getAllCourses().forEach(System.out::println);
+    }
 }
