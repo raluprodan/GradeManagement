@@ -25,7 +25,7 @@ public class GradeController {
     private final ProfessorService professorService;
     @Operation(summary = "Create a grade")
     @PostMapping("/createGrade")
-    public void createGrade(@RequestParam String registryNumber, @RequestParam Long professorID, @RequestParam Date date, @RequestParam double grade) {
+    public void createGrade(@RequestParam String registryNumber, @RequestParam long professorID, @RequestParam Date date, @RequestParam double grade) {
         GradeDTO gradeDTO=new GradeDTO();
         gradeDTO.setAssignee(studentService.getStudentByRegistryNumber(registryNumber));
         gradeDTO.setAssigner(professorService.getProfessor(professorID));
@@ -34,11 +34,27 @@ public class GradeController {
         //add course id to request parameters later
         gradeService.createGrade(gradeDTO);
     }
+
+    @Operation(summary = "Erase a grade")
+    @PostMapping("/deleteGrade")
+    public void deleteGrade(@RequestParam Long gradeID) {
+        Grade grade=gradeService.findGradeById(gradeID);
+        gradeService.deleteGrade(grade);
+    }
+
+    @Operation(summary = "Update grade")
+    @PostMapping("/updateGrade")
+    public void updateGrade(@RequestParam double newGrade,@RequestParam long gradeId){
+        Grade grade=gradeService.findGradeById(gradeId);
+        gradeService.updateGrade(grade,newGrade);
+    }
+
     @Operation(summary="Get a student's grades")
     @GetMapping("/getGrades")
     public List<Grade> getAllOfAStudentsGrades(@RequestParam String registryNumber){
         Student student=studentService.getStudentByRegistryNumber(registryNumber);
         return gradeService.getGradeRepo().findByAssignee(student);
     }
+
 
 }

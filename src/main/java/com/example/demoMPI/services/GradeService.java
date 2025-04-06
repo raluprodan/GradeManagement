@@ -28,4 +28,14 @@ public class GradeService {
     public void createGrade(GradeDTO gradeDTO) {
         Grade grade=gradeMapper.toGrade(gradeDTO);
     }
+    public void deleteGrade(Grade grade) {
+        gradeRepo.delete(grade);
+    }
+    public Grade findGradeById(Long id) {
+        return gradeRepo.findByID(id);
+    }
+    public void updateGrade(Grade grade, double newGr) {
+        grade.setGrade(newGr);
+        gradeRepo.save(grade);
+    }
 }
