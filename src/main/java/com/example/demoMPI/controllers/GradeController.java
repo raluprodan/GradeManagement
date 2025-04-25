@@ -10,6 +10,7 @@ import com.example.demoMPI.services.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -23,6 +24,8 @@ public class GradeController {
     private final GradeService gradeService;
     private final StudentService studentService;
     private final ProfessorService professorService;
+
+    @PreAuthorize("hasRole('PROFESSOR')")
     @Operation(summary = "Create a grade")
     @PostMapping("/createGrade")
     public void createGrade(@RequestParam String registryNumber, @RequestParam long professorID, @RequestParam Date date, @RequestParam double grade) {
@@ -35,6 +38,7 @@ public class GradeController {
         gradeService.createGrade(gradeDTO);
     }
 
+    @PreAuthorize("hasRole('PROFESSOR')")
     @Operation(summary = "Erase a grade")
     @PostMapping("/deleteGrade")
     public void deleteGrade(@RequestParam Long gradeID) {
@@ -42,6 +46,7 @@ public class GradeController {
         gradeService.deleteGrade(grade);
     }
 
+    @PreAuthorize("hasRole('PROFESSOR')")
     @Operation(summary = "Update grade")
     @PostMapping("/updateGrade")
     public void updateGrade(@RequestParam double newGrade,@RequestParam long gradeId){
@@ -49,12 +54,12 @@ public class GradeController {
         gradeService.updateGrade(grade,newGrade);
     }
 
+    @PreAuthorize("hasRole('STUDENT')")
     @Operation(summary="Get a student's grades")
     @GetMapping("/getGrades")
     public List<Grade> getAllOfAStudentsGrades(@RequestParam String registryNumber){
         Student student=studentService.getStudentByRegistryNumber(registryNumber);
         return gradeService.getGradeRepo().findByAssignee(student);
     }
-
 
 }
