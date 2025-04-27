@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,13 +19,6 @@ import java.util.List;
 @Entity
 public class User {
 
-
-    ///pupici dulci de la mine, ca am stat 2 ore
-    /// doar sa realizeze ca nu se crea tabelul de utilizatori
-    /// pt ca incercam sa ma conecteze la baza de date gresita
-    /// am pus corect 2 story points in tabelul ala in jira
-    /// self fulfilling prophecy much?
-    /// -Ana
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
