@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/User.java" afterDir="false" />
+    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-39&#10;Implemented authentication">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demoMPI/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demoMPI/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,8 +90,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745764038086</updated>
-      <workItem from="1745764039333" duration="4275000" />
+      <workItem from="1745764039333" duration="4962000" />
     </task>
+    <task id="LOCAL-00001" summary="GM-39&#10;Implemented authentication">
+      <option name="closed" value="true" />
+      <created>1745768808063</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745768808063</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,5 +128,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GM-39&#10;Implemented authentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-39&#10;Implemented authentication" />
   </component>
 </project>
