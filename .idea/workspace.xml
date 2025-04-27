@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-40&#10;Generated JWT">
+    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-57&#10;CORS Configuration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,13 +20,16 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="GM-39" />
+        <entry key="$PROJECT_DIR$" value="GM-40" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +49,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -53,8 +57,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.DemoMpiApplication.executor": "Run",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "GM-40",
+    "git-widget-placeholder": "GM-57",
     "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745764038086</updated>
-      <workItem from="1745764039333" duration="6539000" />
+      <workItem from="1745764039333" duration="8762000" />
     </task>
     <task id="LOCAL-00001" summary="GM-39&#10;Implemented authentication">
       <option name="closed" value="true" />
@@ -107,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745769795861</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="GM-57&#10;CORS Configuration">
+      <option name="closed" value="true" />
+      <created>1745771364659</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745771364659</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +152,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GM-39&#10;Implemented authentication" />
     <MESSAGE value="GM-40&#10;Generated JWT" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-40&#10;Generated JWT" />
+    <MESSAGE value="GM-57&#10;CORS Configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-57&#10;CORS Configuration" />
   </component>
 </project>
