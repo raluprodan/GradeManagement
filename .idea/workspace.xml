@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-14&#10;Set up HTML project structure">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/html/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/html/index.html" afterDir="false" />
+    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-15&#10;Set up base layout">
+      <change beforePath="$PROJECT_DIR$/src/html/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/html/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="GM-57" />
+        <entry key="$PROJECT_DIR$" value="GM-14" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.DemoMpiApplication.executor": "Run",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "GM-14",
+    "git-widget-placeholder": "GM-15",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -96,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745764038086</updated>
-      <workItem from="1745764039333" duration="9267000" />
+      <workItem from="1745764039333" duration="9388000" />
     </task>
     <task id="LOCAL-00001" summary="GM-39&#10;Implemented authentication">
       <option name="closed" value="true" />
@@ -130,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745776090044</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="GM-15&#10;Set up base layout">
+      <option name="closed" value="true" />
+      <created>1745776467532</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745776467532</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +153,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/GM-39" />
+                        <option value="origin/GM-15" />
                       </list>
                     </value>
                   </entry>
@@ -164,6 +170,7 @@
     <MESSAGE value="GM-40&#10;Generated JWT" />
     <MESSAGE value="GM-57&#10;CORS Configuration" />
     <MESSAGE value="GM-14&#10;Set up HTML project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-14&#10;Set up HTML project structure" />
+    <MESSAGE value="GM-15&#10;Set up base layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-15&#10;Set up base layout" />
   </component>
 </project>
