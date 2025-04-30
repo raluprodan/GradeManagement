@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-20">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/professor_register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/professor_register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/dashboard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/dashboard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/students.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/students.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/students.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/teachers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/teachers.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="GM-20-implement-student-list-with-search-filters" />
+        <entry key="$PROJECT_DIR$" value="GM-19" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,22 +44,22 @@
     &quot;assignee&quot;: &quot;alexialazar&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/raluprodan/GradeManagement.git",
-    "accountId": "094905c8-d7b8-4fbd-96bb-9eac86e1334d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/raluprodan/GradeManagement.git&quot;,
+    &quot;accountId&quot;: &quot;094905c8-d7b8-4fbd-96bb-9eac86e1334d&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "raluprodan",
-    "repository": "GradeManagement"
+    &quot;owner&quot;: &quot;raluprodan&quot;,
+    &quot;repository&quot;: &quot;GradeManagement&quot;
   }
-}]]></component>
+}</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Security Analysis" />
@@ -94,7 +88,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.DemoMpiApplication.executor": "Run",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "GM-18",
+    "git-widget-placeholder": "GM-21",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
