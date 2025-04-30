@@ -211,13 +211,13 @@
     document.addEventListener("DOMContentLoaded", () => {
         const role = localStorage.getItem("role");
 
-// // Show extra menu item for professors
-//         if (role === "PROFESSOR") {
-//             const menu = document.getElementById("side-menu");
-//             const manualLink = document.createElement("a");
-//             manualLink.href = "manual_add.html";
-//             manualLink.textContent = "Manual Add";
-//             menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
-//         }
-    });
+//  Show extra menu item for professors
+        if (role === "PROFESSOR") {
+             const menu = document.getElementById("side-menu");
+            const manualLink = document.createElement("a");
+             manualLink.href = "manual_add.html";
+             manualLink.textContent = "Manual Add";
+             menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
+         }
+   });
 </script>
