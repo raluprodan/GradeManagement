@@ -1,2 +1,1 @@
-// Optional future dashboard logic
-console.log("Dashboard loaded");
+console.log("dashboard works! <3");
