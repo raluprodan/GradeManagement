@@ -1,0 +1,223 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Dashboard</title>-->
+<!--    <link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body onload="checkAuth()">-->
+<!--<div class="side-menu">-->
+<!--    <a href="dashboard.html">Dashboard</a>-->
+<!--    <a href="students.html">Students</a>-->
+<!--    <a href="teachers.html">Teachers</a>-->
+<!--    <a href="grades.html">Gradebook</a>-->
+<!--    <a href="#" onclick="logout()">Logout</a>-->
+<!--</div>-->
+<!--<div class="main">-->
+<!--    <h1>Welcome to the Dashboard</h1>-->
+<!--    <p>Use the side menu to navigate.</p>-->
+<!--</div>-->
+<!--<script src="js/auth.js"></script>-->
+<!--<script src="js/dashboard.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <title>Dashboard</title>-->
+<!--    <link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body onload="loadDashboard()">-->
+<!--<div class="side-menu">-->
+<!--    <a href="dashboard.html">Dashboard</a>-->
+<!--    <a href="students.html">Students</a>-->
+<!--    <a href="teachers.html">Teachers</a>-->
+<!--    <a href="grades.html">Gradebook</a>-->
+<!--    <a href="#" onclick="logout()">Logout</a>-->
+<!--</div>-->
+<!--<div class="main">-->
+<!--    <h1>Welcome to the Dashboard</h1>-->
+<!--    <p>Use the side menu to navigate.</p>-->
+
+<!--    <div id="dynamic-form-container"></div>-->
+<!--</div>-->
+
+<!--<script src="js/auth.js"></script>-->
+<!--<script>-->
+<!--    async function loadDashboard() {-->
+<!--        checkAuth(); // already in your code-->
+<!--        const response = await fetch("/api/v1/auth/me"); // or whatever endpoint gives user info-->
+<!--        if (!response.ok) return;-->
+
+<!--        const user = await response.json();-->
+<!--        const container = document.getElementById("dynamic-form-container");-->
+
+<!--        if (user.role === "STUDENT") {-->
+<!--            container.innerHTML = `-->
+<!--            <h2>Complete Your Student Profile</h2>-->
+<!--            <form id="studentForm">-->
+<!--                Registry Number: <input type="text" name="registryNumber" required><br>-->
+<!--                Year: <input type="text" name="year" required><br>-->
+<!--                Active Year: <input type="checkbox" name="activeYear"><br>-->
+<!--                <button type="submit">Submit</button>-->
+<!--            </form>-->
+<!--        `;-->
+<!--            document.getElementById("studentForm").addEventListener("submit", async function(e) {-->
+<!--                e.preventDefault();-->
+<!--                const form = e.target;-->
+<!--                const body = {-->
+<!--                    registryNumber: form.registryNumber.value,-->
+<!--                    year: form.year.value,-->
+<!--                    activeYear: form.activeYear.checked-->
+<!--                };-->
+<!--                const res = await fetch("/api/v1/Students/createStudent", {-->
+<!--                    method: "POST",-->
+<!--                    headers: { "Content-Type": "application/json" },-->
+<!--                    body: JSON.stringify(body)-->
+<!--                });-->
+<!--                alert(res.ok ? "Student added!" : "Failed to add student.");-->
+<!--            });-->
+<!--        } else if (user.role === "PROFESSOR") {-->
+<!--            container.innerHTML = `-->
+<!--            <h2>Complete Your Professor Profile</h2>-->
+<!--            <form id="profForm">-->
+<!--                Courses (comma-separated): <input type="text" name="courses"><br>-->
+<!--                <button type="submit">Submit</button>-->
+<!--            </form>-->
+<!--        `;-->
+<!--            document.getElementById("profForm").addEventListener("submit", async function(e) {-->
+<!--                e.preventDefault();-->
+<!--                const form = e.target;-->
+<!--                const courses = form.courses.value.split(',').map(name => ({ name: name.trim() }));-->
+<!--                const body = { courses };-->
+<!--                const res = await fetch("/api/v1/Professors/createProfessor", {-->
+<!--                    method: "POST",-->
+<!--                    headers: { "Content-Type": "application/json" },-->
+<!--                    body: JSON.stringify(body)-->
+<!--                });-->
+<!--                alert(res.ok ? "Professor added!" : "Failed to add professor.");-->
+<!--            });-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--<script src="js/dashboard.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <title>Dashboard</title>-->
+<!--    <link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body onload="loadDashboard()">-->
+<!--<div class="side-menu">-->
+<!--    <a href="dashboard.html">Dashboard</a>-->
+<!--    <a href="students.html">Students</a>-->
+<!--    <a href="teachers.html">Teachers</a>-->
+<!--    <a href="grades.html">Gradebook</a>-->
+<!--    <a href="#" onclick="logout()">Logout</a>-->
+<!--</div>-->
+
+<!--<div class="main">-->
+<!--    <h1>Welcome to the Dashboard</h1>-->
+<!--    <p>Use the side menu to navigate.</p>-->
+<!--    <div id="dynamic-form-container"></div>-->
+<!--</div>-->
+
+<!--<script src="js/auth.js"></script>-->
+<!--<script>-->
+<!--    function loadDashboard() {-->
+<!--        checkAuth();-->
+
+<!--        const role = localStorage.getItem("role");-->
+<!--        const container = document.getElementById("dynamic-form-container");-->
+
+<!--        if (role === "STUDENT") {-->
+<!--            container.innerHTML = `-->
+<!--                <h2>Complete Your Student Profile</h2>-->
+<!--                <form id="studentForm">-->
+<!--                    Registry Number: <input type="text" name="registryNumber" required><br>-->
+<!--                    Year: <input type="text" name="year" required><br>-->
+<!--                    Active Year: <input type="checkbox" name="activeYear"><br>-->
+<!--                    <button type="submit">Submit</button>-->
+<!--                </form>-->
+<!--            `;-->
+<!--            document.getElementById("studentForm").addEventListener("submit", async function (e) {-->
+<!--                e.preventDefault();-->
+<!--                const form = e.target;-->
+<!--                const body = {-->
+<!--                    registryNumber: form.registryNumber.value,-->
+<!--                    year: form.year.value,-->
+<!--                    activeYear: form.activeYear.checked-->
+<!--                };-->
+<!--                const res = await authFetch("http://localhost:8080/api/v1/Students/createStudent", {-->
+<!--                    method: "POST",-->
+<!--                    body: JSON.stringify(body)-->
+<!--                });-->
+<!--                alert(res.ok ? "Student added!" : "Failed to add student.");-->
+<!--            });-->
+
+<!--        } else if (role === "PROFESSOR") {-->
+<!--            container.innerHTML = `-->
+<!--                <h2>Complete Your Professor Profile</h2>-->
+<!--                <form id="profForm">-->
+<!--                    Courses (comma-separated): <input type="text" name="courses"><br>-->
+<!--                    <button type="submit">Submit</button>-->
+<!--                </form>-->
+<!--            `;-->
+<!--            document.getElementById("profForm").addEventListener("submit", async function (e) {-->
+<!--                e.preventDefault();-->
+<!--                const form = e.target;-->
+<!--                const courses = form.courses.value.split(',').map(name => ({ name: name.trim() }));-->
+<!--                const body = { courses };-->
+<!--                const res = await authFetch("http://localhost:8080/api/v1/Professors/createProfessor", {-->
+<!--                    method: "POST",-->
+<!--                    body: JSON.stringify(body)-->
+<!--                });-->
+<!--                alert(res.ok ? "Professor added!" : "Failed to add professor.");-->
+<!--            });-->
+<!--        } else {-->
+<!--            container.innerHTML = `<p>Unknown role. Please contact support.</p>`;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--<script src="js/dashboard.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth()">
+<div class="side-menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="grades.html">Gradebook</a>
+   <!-- <a href="professor_register.html">prof</a> -->
+    <!--<a href="manual_add.html">Add to database</a> -->
+    <!-- Manual Add link will be injected here for professors -->
+    <a href="#" onclick="logout()">Logout</a>
+</div>
+<div class="main">
+    <h1>Welcome to the Dashboard</h1>
+    <p>Use the side menu to navigate.</p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const role = localStorage.getItem("role");
+
+// Show extra menu item for professors
+        if (role === "PROFESSOR") {
+            const menu = document.getElementById("side-menu");
+            const manualLink = document.createElement("a");
+            manualLink.href = "manual_add.html";
+            manualLink.textContent = "Manual Add";
+            menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
+        }
+    });
+</script>

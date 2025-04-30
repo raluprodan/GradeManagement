@@ -21,4 +21,6 @@ public class Professor extends User{
     private List<Course> courses;
     @Enumerated(EnumType.STRING)
     private Role role= Role.valueOf("PROFESSOR");
+
+
 }
