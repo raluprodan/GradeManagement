@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+<h2>Student Profile Setup</h2>
+<form id="studentForm">
+    Registry Number: <input type="text" name="registryNumber" required><br>
+    Year: <input type="text" name="year" required><br>
+    Active Year: <input type="checkbox" name="activeYear"><br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("studentForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const body = {
+            registryNumber: form.registryNumber.value,
+            year: form.year.value,
+            activeYear: form.activeYear.checked
+        };
+
+        fetch("/api/v1/Students/createStudent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(body)
+        }).then(res => {
+            if (res.ok) alert("Student added!");
+            else alert("Error adding student.");
+        });
+    });
+</script>
+</body>
+</html>
