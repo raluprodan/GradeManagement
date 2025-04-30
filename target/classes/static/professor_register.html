@@ -1,0 +1,123 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Professor Registration</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Professor Profile Setup</h2>-->
+<!--<form id="profForm">-->
+<!--    Courses (comma-separated): <input type="text" name="courses"><br>-->
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
+
+<!--<script>-->
+<!--    document.getElementById("profForm").addEventListener("submit", function(e) {-->
+<!--        e.preventDefault();-->
+
+<!--        const form = e.target;-->
+<!--        const courseNames = form.courses.value.split(',').map(s => s.trim()).filter(Boolean);-->
+<!--        const courses = courseNames.map(name => ({ name }));-->
+
+<!--        const body = {-->
+<!--            courses: courses-->
+<!--        };-->
+
+<!--        fetch("/api/v1/Professors/createProfessor", {-->
+<!--            method: "POST",-->
+<!--            headers: { "Content-Type": "application/json",-->
+<!--                "Authorization": `Bearer ${localStorage.getItem('token')}`-->
+<!--            },-->
+<!--            body: JSON.stringify(body)-->
+<!--        }).then(res => {-->
+<!--            if (res.ok) alert("Professor added!");-->
+<!--            else alert("Error adding professor.");-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual Professor Creation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth()">
+<div class="side-menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="grades.html">Gradebook</a>
+    <a href="professor_register.html">prof</a>
+    <a href="manual_add.html">Add to database</a>
+    <!-- Manual Add link will be injected here for professors -->
+    <a href="#" onclick="logout()">Logout</a>
+</div>
+<div class="container">
+    <h2>Create Professor Manually</h2>
+    <form id="professorForm">
+        <label>First Name:</label><br>
+        <input type="text" id="firstName" required><br><br>
+
+        <label>Last Name:</label><br>
+        <input type="text" id="lastName" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" id="email" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="password" required><br><br>
+
+        <label>Courses (comma-separated):</label><br>
+        <input type="text" id="courses" placeholder="e.g. Math, Physics"><br><br>
+
+        <button type="button" id="submit-btn">Submit</button>
+    </form>
+</div>
+
+<script src="js/auth.js"></script>
+<script>
+    checkAuth();
+
+    document.getElementById("submit-btn").addEventListener("click", () => {
+        const role = localStorage.getItem("role");
+        if (role !== "PROFESSOR") {
+            alert("Access denied. Only professors can submit this form.");
+            return;
+        }
+
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const courseInput = document.getElementById("courses").value;
+
+        const courses = courseInput
+            .split(',')
+            .map(name => name.trim())
+            .filter(Boolean)
+            .map(name => ({ name }));
+
+        const payload = {
+            firstName,
+            lastName,
+            email,
+            password,
+            courses
+        };
+
+        authFetch("http://localhost:8080/api/v1/Professors/createProfessor", {
+            method: "POST",
+            body: JSON.stringify(payload)
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Professor created successfully!");
+                } else {
+                    alert("Failed to create professor.");
+                    res.text().then(console.error);
+                }
+            });
+    });
+</script>

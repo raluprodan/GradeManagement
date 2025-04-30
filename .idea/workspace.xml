@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-15&#10;Set up base layout">
-      <change beforePath="$PROJECT_DIR$/src/html/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/html/js/main.js" afterDir="false" />
+    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-20">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/professor_register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/professor_register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/dashboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/dashboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/students.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/students.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/students.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,25 +29,50 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="GM-14" />
+        <entry key="$PROJECT_DIR$" value="GM-20-implement-student-list-with-search-filters" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;alexialazar&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/raluprodan/GradeManagement.git",
+    "accountId": "094905c8-d7b8-4fbd-96bb-9eac86e1334d"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "raluprodan",
+    "repository": "GradeManagement"
+  }
 }]]></component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2wJeKCG5K7WEBhn1cALQv6V0YRA" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -50,14 +85,16 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.dashboard.html.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.DemoMpiApplication.executor": "Run",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "GM-15",
+    "git-widget-placeholder": "GM-18",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -69,7 +106,19 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lazar\Desktop\faculatte\demoMPI\GradeManagement\src\main\resources\static" />
+      <recent name="C:\Users\lazar\Desktop\faculatte\demoMPI\GradeManagement\src\frontend" />
+      <recent name="C:\Users\lazar\Desktop\faculatte\demoMPI\GradeManagement\src\frontend\js" />
+      <recent name="C:\Users\lazar\Desktop\faculatte\demoMPI\GradeManagement\src\main\resources\static\scripts" />
+      <recent name="C:\Users\lazar\Desktop\faculatte\demoMPI\GradeManagement\src\main\resources\static\dashboard" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DemoMpiApplication">
+    <configuration name="dashboard.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GradeManagement/demoMPI/static/dashboard.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="DemoMpiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="demoMPI" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demoMPI.DemoMpiApplication" />
@@ -77,12 +126,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.dashboard.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
   </component>
@@ -95,6 +149,12 @@
       <option name="presentableId" value="Default" />
       <updated>1745764038086</updated>
       <workItem from="1745764039333" duration="9388000" />
+      <workItem from="1745876011453" duration="46000" />
+      <workItem from="1745876076540" duration="155000" />
+      <workItem from="1745930956644" duration="15706000" />
+      <workItem from="1745950643709" duration="11999000" />
+      <workItem from="1745963442283" duration="16106000" />
+      <workItem from="1746006489903" duration="9503000" />
     </task>
     <task id="LOCAL-00001" summary="GM-39&#10;Implemented authentication">
       <option name="closed" value="true" />
@@ -136,7 +196,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745776467532</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="GM-17-Implement-login-flow">
+      <option name="closed" value="true" />
+      <created>1745978243761</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1745978243762</updated>
+    </task>
+    <task id="LOCAL-00007" summary="GM-20">
+      <option name="closed" value="true" />
+      <created>1746016317387</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746016317387</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +229,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/GM-15" />
+                        <option value="origin/GM-18" />
                       </list>
                     </value>
                   </entry>
@@ -171,6 +247,8 @@
     <MESSAGE value="GM-57&#10;CORS Configuration" />
     <MESSAGE value="GM-14&#10;Set up HTML project structure" />
     <MESSAGE value="GM-15&#10;Set up base layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-15&#10;Set up base layout" />
+    <MESSAGE value="GM-17-Implement-login-flow" />
+    <MESSAGE value="GM-20" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-20" />
   </component>
 </project>

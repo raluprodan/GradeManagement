@@ -1,8 +1,11 @@
+/* Base Styles */
 body {
     font-family: sans-serif;
     margin: 0;
     display: flex;
 }
+
+/* Side Menu */
 .side-menu {
     width: 200px;
     background: #7575b8;
@@ -10,39 +13,62 @@ body {
     padding: 10px;
     height: 100vh;
 }
+
 .side-menu a {
     display: block;
     color: white;
     text-decoration: none;
     margin: 10px 0;
 }
+
+/* Main Content */
 .main {
     padding: 20px;
     flex-grow: 1;
 }
+
+/* Login Container */
 .login-container {
     max-width: 300px;
     margin: 100px auto;
     display: flex;
     flex-direction: column;
 }
-input {
-    margin: 5px 0;
-    padding: 8px;
-}
-button {
-    padding: 8px;
-    margin-top: 10px;
-}
-.error {
-    color: red;
-}
+
 .login-container a {
     margin-top: 10px;
     display: block;
     color: #333;
     text-align: center;
 }
+
+/* Form Elements */
+label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+input, select, button {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+input {
+    padding: 8px;
+}
+
+button {
+    padding: 8px;
+    margin-top: 10px;
+}
+
+/* Error Message */
+.error {
+    color: red;
+}
+
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -55,7 +81,8 @@ table thead {
     color: white;
 }
 
-table th, table td {
+table th,
+table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
@@ -67,15 +94,4 @@ table tr:nth-child(even) {
 
 table tr:hover {
     background-color: #ddd;
-}
-
-label {
-    margin-right: 5px;
-    font-weight: bold;
-}
-
-input, select, button {
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
 }
