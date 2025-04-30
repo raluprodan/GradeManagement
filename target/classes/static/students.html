@@ -68,6 +68,12 @@
         <label>Registry Number:</label>
         <input type="text" id="registryFilter">
 
+        <label>Last Name:</label>
+        <input type="text" id="lastNameFilter">
+
+        <label>First Name:</label>
+        <input type="text" id="firstNameFilter">
+
         <label>Year:</label>
         <select id="yearFilter">
             <option value="">All</option>
@@ -86,10 +92,13 @@
         <button onclick="filterStudents()">Filter</button>
     </div>
 
+
     <table>
         <thead>
         <tr>
             <th>Registry Number</th>
+            <th>Last Name</th>
+            <th>First Name</th>
             <th>Year</th>
             <th>User ID</th>
             <th>Active Year</th>

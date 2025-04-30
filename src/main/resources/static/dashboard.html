@@ -197,8 +197,7 @@
     <a href="students.html">Students</a>
     <a href="teachers.html">Teachers</a>
     <a href="grades.html">Gradebook</a>
-    <a href="professor_register.html">prof</a>
-    <a href="manual_add.html">Add to database</a>
+    <!--<a href="professor_register.html">prof</a>-->
     <!-- Manual Add link will be injected here for professors -->
     <a href="#" onclick="logout()">Logout</a>
 </div>
@@ -207,17 +206,18 @@
     <p>Use the side menu to navigate.</p>
 </div>
 
+<script src="js/dashboard.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const role = localStorage.getItem("role");
 
-// Show extra menu item for professors
-        if (role === "PROFESSOR") {
-            const menu = document.getElementById("side-menu");
-            const manualLink = document.createElement("a");
-            manualLink.href = "manual_add.html";
-            manualLink.textContent = "Manual Add";
-            menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
-        }
+// // Show extra menu item for professors
+//         if (role === "PROFESSOR") {
+//             const menu = document.getElementById("side-menu");
+//             const manualLink = document.createElement("a");
+//             manualLink.href = "manual_add.html";
+//             manualLink.textContent = "Manual Add";
+//             menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
+//         }
     });
 </script>
