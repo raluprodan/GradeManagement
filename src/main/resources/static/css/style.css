@@ -5,7 +5,7 @@ body {
 }
 .side-menu {
     width: 200px;
-    background: #333;
+    background: #7575b8;
     color: white;
     padding: 10px;
     height: 100vh;
@@ -42,4 +42,40 @@ button {
     display: block;
     color: #333;
     text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+table thead {
+    background-color: #c8c8f5;
+    color: white;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+input, select, button {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
 }

@@ -1,27 +1,91 @@
-let students = [];
+// let students = [];
+//
+// function loadStudents() {
+//     checkAuth();
+//     authFetch("/api/students")
+//         .then(res => res.json())
+//         .then(data => {
+//             students = data;
+//             renderStudentTable(data);
+//         });
+// }
+//
+// function renderStudentTable(list) {
+//     const table = document.getElementById("studentTableBody");
+//     table.innerHTML = "";
+//
+//     list.forEach(s => {
+//         const tr = document.createElement("tr");
+//         tr.innerHTML = `
+//             <td>${s.id}</td>
+//             <td>${s.name || ''}</td>
+//             <td>${s.registryNumber || ''}</td>
+//             <td>${s.year || ''}</td>
+//             <td>${s.activeYear ? "Yes" : "No"}</td>
+//         `;
+//         table.appendChild(tr);
+//     });
+// }
+//
+// function filterStudents() {
+//     const criteria = document.getElementById("filterCriteria").value;
+//     const query = document.getElementById("searchInput").value.toLowerCase();
+//
+//     if (criteria === "all" || query === "") {
+//         renderStudentTable(students);
+//         return;
+//     }
+//
+//     const filtered = students.filter(s => {
+//         const value = (s[criteria] || "").toString().toLowerCase();
+//         return value.includes(query);
+//     });
+//
+//     renderStudentTable(filtered);
+// }
+const students = [
+    { registryNumber: "REG2024001", year: 1, userId: 1, activeYear: true },
+    { registryNumber: "REG2024002", year: 2, userId: 2, activeYear: true },
+    { registryNumber: "REG2024003", year: 1, userId: 52, activeYear: false },
+    { registryNumber: "REG2024004", year: 3, userId: 102, activeYear: true },
+    { registryNumber: "REG2024005", year: 2, userId: 103, activeYear: true },
+    { registryNumber: "REG2024006", year: 1, userId: 104, activeYear: false },
+    { registryNumber: "REG2024007", year: 3, userId: 105, activeYear: true },
+    { registryNumber: "REG2024008", year: 2, userId: 106, activeYear: true },
+    { registryNumber: "REG2024009", year: 3, userId: 107, activeYear: false },
+    { registryNumber: "REG2024010", year: 1, userId: 108, activeYear: true },
+];
 
 function loadStudents() {
-    checkAuth();
-    authFetch("/api/students")
-        .then(res => res.json())
-        .then(data => {
-            students = data;
-            renderStudentList(data);
-        });
+    renderStudentTable(students);
 }
 
-function renderStudentList(list) {
-    const ul = document.getElementById("studentList");
-    ul.innerHTML = "";
+function renderStudentTable(list) {
+    const tbody = document.getElementById("studentTableBody");
+    tbody.innerHTML = "";
     list.forEach(s => {
-        const li = document.createElement("li");
-        li.innerText = s.name + " - " + s.id;
-        ul.appendChild(li);
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${s.registryNumber}</td>
+            <td>${s.year}</td>
+            <td>${s.userId}</td>
+            <td>${s.activeYear ? "Yes" : "No"}</td>
+        `;
+        tbody.appendChild(tr);
     });
 }
 
 function filterStudents() {
-    const query = document.getElementById("search").value.toLowerCase();
-    const filtered = students.filter(s => s.name.toLowerCase().includes(query));
-    renderStudentList(filtered);
+    const reg = document.getElementById("registryFilter").value.toLowerCase();
+    const year = document.getElementById("yearFilter").value;
+    const active = document.getElementById("activeFilter").value;
+
+    const filtered = students.filter(s => {
+        const matchesReg = reg === "" || s.registryNumber.toLowerCase().includes(reg);
+        const matchesYear = year === "" || s.year === parseInt(year);
+        const matchesActive = active === "" || s.activeYear === (active === "true");
+        return matchesReg && matchesYear && matchesActive;
+    });
+
+    renderStudentTable(filtered);
 }

@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/GradeManagement
+    url: jdbc:postgresql://localhost:5433/GradeManagement
     username: postgres
-    password: 1234
+    password: 123000
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

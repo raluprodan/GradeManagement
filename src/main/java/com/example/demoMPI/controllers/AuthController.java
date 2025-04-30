@@ -1,10 +1,14 @@
 package com.example.demoMPI.controllers;
 
 import com.example.demoMPI.User;
+import com.example.demoMPI.dtos.ProfessorDTO;
+import com.example.demoMPI.dtos.StudentDTO;
 import com.example.demoMPI.repos.UserRepo;
 import com.example.demoMPI.dtos.RegisterRequest;
 import com.example.demoMPI.dtos.LoginRequest;
 import com.example.demoMPI.services.JwtService;
+import com.example.demoMPI.services.ProfessorService;
+import com.example.demoMPI.services.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,6 +30,9 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final StudentService studentService;
+    private final ProfessorService professorService;
+
 
 
     @PostMapping("/register")
@@ -44,8 +51,28 @@ public class AuthController {
                 .build();
 
         userRepo.save(user);
+
+        // Automatically insert into role-specific table
+        if (user.getRole().name().equals("STUDENT")) {
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setEmail(user.getEmail());
+            studentDTO.setFirstName(user.getFirstName());
+            studentDTO.setLastName(user.getLastName());
+            studentDTO.setPhone(user.getPhone());
+            // optionally set default year, registry number, etc.
+            studentService.createStudent(studentDTO);
+        } else if (user.getRole().name().equals("PROFESSOR")) {
+            ProfessorDTO professorDTO = new ProfessorDTO();
+            professorDTO.setEmail(user.getEmail());
+            professorDTO.setFirstName(user.getFirstName());
+            professorDTO.setLastName(user.getLastName());
+            professorDTO.setPhone(user.getPhone());
+            professorService.createProfessor(professorDTO);
+        }
+
         return ResponseEntity.ok("User registered successfully!");
     }
+
 
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody LoginRequest request) {
@@ -61,7 +88,7 @@ public class AuthController {
         User user = userRepo.findByEmail(request.getEmail()).orElseThrow();
 
 //        return jwtService.generateToken(request.getEmail());
-       // String token = jwtService.generateToken(request.getEmail());
+        // String token = jwtService.generateToken(request.getEmail());
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name()); // 👈 FIXED LINE
         return Map.of(
                 "token", token,

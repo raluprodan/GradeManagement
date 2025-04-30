@@ -1,3 +1,51 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Students</title>-->
+<!--    <link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body onload="loadStudents()">-->
+<!--<div class="side-menu">-->
+<!--    <a href="dashboard.html">Dashboard</a>-->
+<!--    <a href="students.html">Students</a>-->
+<!--    <a href="teachers.html">Teachers</a>-->
+<!--    <a href="grades.html">Gradebook</a>-->
+<!--    <a href="#" onclick="logout()">Logout</a>-->
+<!--</div>-->
+<!--<div class="main">-->
+<!--    <h2>Students</h2>-->
+
+<!--    <div>-->
+<!--        <label for="filterCriteria">Filter by:</label>-->
+<!--        <select id="filterCriteria">-->
+<!--            <option value="all">All</option>-->
+<!--            <option value="name">Name</option>-->
+<!--            <option value="registryNumber">Registry Number</option>-->
+<!--            <option value="year">Year</option>-->
+<!--        </select>-->
+
+<!--        <input type="text" id="searchInput" placeholder="Enter filter text" />-->
+<!--        <button onclick="filterStudents()">Filter</button>-->
+<!--    </div>-->
+
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Registry Number</th>-->
+<!--            <th>Year</th>-->
+<!--            <th>Active</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody id="studentTableBody"></tbody>-->
+<!--    </table>-->
+<!--</div>-->
+
+<!--<script src="js/auth.js"></script>-->
+<!--<script src="js/students.js"></script>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +60,54 @@
     <a href="grades.html">Gradebook</a>
     <a href="#" onclick="logout()">Logout</a>
 </div>
+
 <div class="main">
     <h2>Students</h2>
-    <input type="text" id="search" placeholder="Search by name..." oninput="filterStudents()"/>
-    <ul id="studentList"></ul>
+
+    <div>
+        <label>Registry Number:</label>
+        <input type="text" id="registryFilter">
+
+        <label>Last Name:</label>
+        <input type="text" id="lastNameFilter">
+
+        <label>First Name:</label>
+        <input type="text" id="firstNameFilter">
+
+        <label>Year:</label>
+        <select id="yearFilter">
+            <option value="">All</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <label>Active Year:</label>
+        <select id="activeFilter">
+            <option value="">All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+
+        <button onclick="filterStudents()">Filter</button>
+    </div>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Registry Number</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Year</th>
+            <th>User ID</th>
+            <th>Active Year</th>
+        </tr>
+        </thead>
+        <tbody id="studentTableBody"></tbody>
+    </table>
 </div>
+
 <script src="js/auth.js"></script>
 <script src="js/students.js"></script>
 </body>
