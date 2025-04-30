@@ -1,0 +1,252 @@
+Index: src/main/resources/static/students.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!--<!DOCTYPE html>-->\r\n<!--<html>-->\r\n<!--<head>-->\r\n<!--    <title>Students</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"loadStudents()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"main\">-->\r\n<!--    <h2>Students</h2>-->\r\n\r\n<!--    <div>-->\r\n<!--        <label for=\"filterCriteria\">Filter by:</label>-->\r\n<!--        <select id=\"filterCriteria\">-->\r\n<!--            <option value=\"all\">All</option>-->\r\n<!--            <option value=\"name\">Name</option>-->\r\n<!--            <option value=\"registryNumber\">Registry Number</option>-->\r\n<!--            <option value=\"year\">Year</option>-->\r\n<!--        </select>-->\r\n\r\n<!--        <input type=\"text\" id=\"searchInput\" placeholder=\"Enter filter text\" />-->\r\n<!--        <button onclick=\"filterStudents()\">Filter</button>-->\r\n<!--    </div>-->\r\n\r\n<!--    <table>-->\r\n<!--        <thead>-->\r\n<!--        <tr>-->\r\n<!--            <th>ID</th>-->\r\n<!--            <th>Name</th>-->\r\n<!--            <th>Registry Number</th>-->\r\n<!--            <th>Year</th>-->\r\n<!--            <th>Active</th>-->\r\n<!--        </tr>-->\r\n<!--        </thead>-->\r\n<!--        <tbody id=\"studentTableBody\"></tbody>-->\r\n<!--    </table>-->\r\n<!--</div>-->\r\n\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script src=\"js/students.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Students</title>\r\n    <link rel=\"stylesheet\" href=\"css/style.css\">\r\n</head>\r\n<body onload=\"loadStudents()\">\r\n<div class=\"side-menu\">\r\n    <a href=\"dashboard.html\">Dashboard</a>\r\n    <a href=\"students.html\">Students</a>\r\n    <a href=\"teachers.html\">Teachers</a>\r\n    <a href=\"grades.html\">Gradebook</a>\r\n    <a href=\"#\" onclick=\"logout()\">Logout</a>\r\n</div>\r\n\r\n<div class=\"main\">\r\n    <h2>Students</h2>\r\n\r\n    <div>\r\n        <label>Registry Number:</label>\r\n        <input type=\"text\" id=\"registryFilter\">\r\n\r\n        <label>Last Name:</label>\r\n        <input type=\"text\" id=\"lastNameFilter\">\r\n\r\n        <label>First Name:</label>\r\n        <input type=\"text\" id=\"firstNameFilter\">\r\n\r\n        <label>Year:</label>\r\n        <select id=\"yearFilter\">\r\n            <option value=\"\">All</option>\r\n            <option value=\"1\">1</option>\r\n            <option value=\"2\">2</option>\r\n            <option value=\"3\">3</option>\r\n        </select>\r\n\r\n        <label>Active Year:</label>\r\n        <select id=\"activeFilter\">\r\n            <option value=\"\">All</option>\r\n            <option value=\"true\">Yes</option>\r\n            <option value=\"false\">No</option>\r\n        </select>\r\n\r\n        <button onclick=\"filterStudents()\">Filter</button>\r\n    </div>\r\n\r\n\r\n    <table>\r\n        <thead>\r\n        <tr>\r\n            <th>Registry Number</th>\r\n            <th>Last Name</th>\r\n            <th>First Name</th>\r\n            <th>Year</th>\r\n            <th>User ID</th>\r\n            <th>Active Year</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody id=\"studentTableBody\"></tbody>\r\n    </table>\r\n</div>\r\n\r\n<script src=\"js/auth.js\"></script>\r\n<script src=\"js/students.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/students.html b/src/main/resources/static/students.html
+--- a/src/main/resources/static/students.html	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/src/main/resources/static/students.html	(date 1746019779784)
+@@ -56,7 +56,7 @@
+ <div class="side-menu">
+     <a href="dashboard.html">Dashboard</a>
+     <a href="students.html">Students</a>
+-    <a href="teachers.html">Teachers</a>
++    <a href="professors.html">Professors</a>
+     <a href="grades.html">Gradebook</a>
+     <a href="#" onclick="logout()">Logout</a>
+ </div>
+Index: src/main/resources/static/dashboard.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!--<!DOCTYPE html>-->\r\n<!--<html>-->\r\n<!--<head>-->\r\n<!--    <title>Dashboard</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"checkAuth()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"main\">-->\r\n<!--    <h1>Welcome to the Dashboard</h1>-->\r\n<!--    <p>Use the side menu to navigate.</p>-->\r\n<!--</div>-->\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script src=\"js/dashboard.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n\r\n<!--<!DOCTYPE html>-->\r\n<!--<html lang=\"en\">-->\r\n<!--<head>-->\r\n<!--    <title>Dashboard</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"loadDashboard()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"main\">-->\r\n<!--    <h1>Welcome to the Dashboard</h1>-->\r\n<!--    <p>Use the side menu to navigate.</p>-->\r\n\r\n<!--    <div id=\"dynamic-form-container\"></div>-->\r\n<!--</div>-->\r\n\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script>-->\r\n<!--    async function loadDashboard() {-->\r\n<!--        checkAuth(); // already in your code-->\r\n<!--        const response = await fetch(\"/api/v1/auth/me\"); // or whatever endpoint gives user info-->\r\n<!--        if (!response.ok) return;-->\r\n\r\n<!--        const user = await response.json();-->\r\n<!--        const container = document.getElementById(\"dynamic-form-container\");-->\r\n\r\n<!--        if (user.role === \"STUDENT\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--            <h2>Complete Your Student Profile</h2>-->\r\n<!--            <form id=\"studentForm\">-->\r\n<!--                Registry Number: <input type=\"text\" name=\"registryNumber\" required><br>-->\r\n<!--                Year: <input type=\"text\" name=\"year\" required><br>-->\r\n<!--                Active Year: <input type=\"checkbox\" name=\"activeYear\"><br>-->\r\n<!--                <button type=\"submit\">Submit</button>-->\r\n<!--            </form>-->\r\n<!--        `;-->\r\n<!--            document.getElementById(\"studentForm\").addEventListener(\"submit\", async function(e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const body = {-->\r\n<!--                    registryNumber: form.registryNumber.value,-->\r\n<!--                    year: form.year.value,-->\r\n<!--                    activeYear: form.activeYear.checked-->\r\n<!--                };-->\r\n<!--                const res = await fetch(\"/api/v1/Students/createStudent\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    headers: { \"Content-Type\": \"application/json\" },-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Student added!\" : \"Failed to add student.\");-->\r\n<!--            });-->\r\n<!--        } else if (user.role === \"PROFESSOR\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--            <h2>Complete Your Professor Profile</h2>-->\r\n<!--            <form id=\"profForm\">-->\r\n<!--                Courses (comma-separated): <input type=\"text\" name=\"courses\"><br>-->\r\n<!--                <button type=\"submit\">Submit</button>-->\r\n<!--            </form>-->\r\n<!--        `;-->\r\n<!--            document.getElementById(\"profForm\").addEventListener(\"submit\", async function(e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const courses = form.courses.value.split(',').map(name => ({ name: name.trim() }));-->\r\n<!--                const body = { courses };-->\r\n<!--                const res = await fetch(\"/api/v1/Professors/createProfessor\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    headers: { \"Content-Type\": \"application/json\" },-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Professor added!\" : \"Failed to add professor.\");-->\r\n<!--            });-->\r\n<!--        }-->\r\n<!--    }-->\r\n<!--</script>-->\r\n<!--<script src=\"js/dashboard.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n\r\n<!--<!DOCTYPE html>-->\r\n<!--<html lang=\"en\">-->\r\n<!--<head>-->\r\n<!--    <title>Dashboard</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"loadDashboard()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n\r\n<!--<div class=\"main\">-->\r\n<!--    <h1>Welcome to the Dashboard</h1>-->\r\n<!--    <p>Use the side menu to navigate.</p>-->\r\n<!--    <div id=\"dynamic-form-container\"></div>-->\r\n<!--</div>-->\r\n\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script>-->\r\n<!--    function loadDashboard() {-->\r\n<!--        checkAuth();-->\r\n\r\n<!--        const role = localStorage.getItem(\"role\");-->\r\n<!--        const container = document.getElementById(\"dynamic-form-container\");-->\r\n\r\n<!--        if (role === \"STUDENT\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--                <h2>Complete Your Student Profile</h2>-->\r\n<!--                <form id=\"studentForm\">-->\r\n<!--                    Registry Number: <input type=\"text\" name=\"registryNumber\" required><br>-->\r\n<!--                    Year: <input type=\"text\" name=\"year\" required><br>-->\r\n<!--                    Active Year: <input type=\"checkbox\" name=\"activeYear\"><br>-->\r\n<!--                    <button type=\"submit\">Submit</button>-->\r\n<!--                </form>-->\r\n<!--            `;-->\r\n<!--            document.getElementById(\"studentForm\").addEventListener(\"submit\", async function (e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const body = {-->\r\n<!--                    registryNumber: form.registryNumber.value,-->\r\n<!--                    year: form.year.value,-->\r\n<!--                    activeYear: form.activeYear.checked-->\r\n<!--                };-->\r\n<!--                const res = await authFetch(\"http://localhost:8080/api/v1/Students/createStudent\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Student added!\" : \"Failed to add student.\");-->\r\n<!--            });-->\r\n\r\n<!--        } else if (role === \"PROFESSOR\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--                <h2>Complete Your Professor Profile</h2>-->\r\n<!--                <form id=\"profForm\">-->\r\n<!--                    Courses (comma-separated): <input type=\"text\" name=\"courses\"><br>-->\r\n<!--                    <button type=\"submit\">Submit</button>-->\r\n<!--                </form>-->\r\n<!--            `;-->\r\n<!--            document.getElementById(\"profForm\").addEventListener(\"submit\", async function (e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const courses = form.courses.value.split(',').map(name => ({ name: name.trim() }));-->\r\n<!--                const body = { courses };-->\r\n<!--                const res = await authFetch(\"http://localhost:8080/api/v1/Professors/createProfessor\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Professor added!\" : \"Failed to add professor.\");-->\r\n<!--            });-->\r\n<!--        } else {-->\r\n<!--            container.innerHTML = `<p>Unknown role. Please contact support.</p>`;-->\r\n<!--        }-->\r\n<!--    }-->\r\n<!--</script>-->\r\n<!--<script src=\"js/dashboard.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <title>Dashboard</title>\r\n    <link rel=\"stylesheet\" href=\"css/style.css\">\r\n</head>\r\n<body onload=\"checkAuth()\">\r\n<div class=\"side-menu\">\r\n    <a href=\"dashboard.html\">Dashboard</a>\r\n    <a href=\"students.html\">Students</a>\r\n    <a href=\"teachers.html\">Teachers</a>\r\n    <a href=\"grades.html\">Gradebook</a>\r\n    <a href=\"professor_register.html\">prof</a>\r\n    <a href=\"manual_add.html\">Add to database</a>\r\n    <!-- Manual Add link will be injected here for professors -->\r\n    <a href=\"#\" onclick=\"logout()\">Logout</a>\r\n</div>\r\n<div class=\"main\">\r\n    <h1>Welcome to the Dashboard</h1>\r\n    <p>Use the side menu to navigate.</p>\r\n</div>\r\n\r\n<script>\r\n    document.addEventListener(\"DOMContentLoaded\", () => {\r\n        const role = localStorage.getItem(\"role\");\r\n\r\n// Show extra menu item for professors\r\n        if (role === \"PROFESSOR\") {\r\n            const menu = document.getElementById(\"side-menu\");\r\n            const manualLink = document.createElement(\"a\");\r\n            manualLink.href = \"manual_add.html\";\r\n            manualLink.textContent = \"Manual Add\";\r\n            menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout\r\n        }\r\n    });\r\n</script>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/dashboard.html b/src/main/resources/static/dashboard.html
+--- a/src/main/resources/static/dashboard.html	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/src/main/resources/static/dashboard.html	(date 1746020075945)
+@@ -195,10 +195,9 @@
+ <div class="side-menu">
+     <a href="dashboard.html">Dashboard</a>
+     <a href="students.html">Students</a>
+-    <a href="teachers.html">Teachers</a>
++    <a href="professors.html">Professors</a>
+     <a href="grades.html">Gradebook</a>
+-    <a href="professor_register.html">prof</a>
+-    <a href="manual_add.html">Add to database</a>
++<!--    <a href="professor_register.html">prof</a>-->
+     <!-- Manual Add link will be injected here for professors -->
+     <a href="#" onclick="logout()">Logout</a>
+ </div>
+@@ -210,14 +209,15 @@
+ <script>
+     document.addEventListener("DOMContentLoaded", () => {
+         const role = localStorage.getItem("role");
+-
+-// Show extra menu item for professors
+-        if (role === "PROFESSOR") {
+-            const menu = document.getElementById("side-menu");
+-            const manualLink = document.createElement("a");
+-            manualLink.href = "manual_add.html";
+-            manualLink.textContent = "Manual Add";
+-            menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
+-        }
++//
++// // Show extra menu item for professors
++//         if (role === "PROFESSOR") {
++//             const menu = document.getElementById("side-menu");
++//             const manualLink = document.createElement("a");
++//             manualLink.href = "manual_add.html";
++//             manualLink.textContent = "Manual Add";
++//             menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout
++//         }
+     });
++
+ </script>
+Index: src/main/resources/static/js/teachers.js
+===================================================================
+diff --git a/src/main/resources/static/js/teachers.js b/src/main/resources/static/js/professors.js
+rename from src/main/resources/static/js/teachers.js
+rename to src/main/resources/static/js/professors.js
+--- a/src/main/resources/static/js/teachers.js	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/src/main/resources/static/js/professors.js	(date 1746020692845)
+@@ -25,3 +25,47 @@
+ //     const filtered = teachers.filter(t => t.name.toLowerCase().includes(q));
+ //     renderTeachers(filtered);
+ // }
++const professors = [
++    { is_form_master: true, subject: "Mathematics", id: 53, firstName: "John", lastName: "Doe" },
++    { is_form_master: false, subject: "Biology", id: 54, firstName: "Maria", lastName: "Harlea" },
++    { is_form_master: false, subject: "Physics", id: 109, firstName: "Andreea", lastName: "Molnar" },
++    { is_form_master: true, subject: "Computer Science", id: 110, firstName: "Teodor", lastName: "Mita" },
++];
++
++function loadProfessors() {
++    renderProfessorTable(professors);
++}
++
++function renderProfessorTable(list) {
++    const tbody = document.getElementById("professorTableBody");
++    tbody.innerHTML = "";
++    list.forEach(p => {
++        const tr = document.createElement("tr");
++        tr.innerHTML = `
++            <td>${p.is_form_master ? "Yes" : "No"}</td>
++            <td>${p.subject}</td>
++            <td>${p.id}</td>
++            <td>${p.firstName}</td>
++            <td>${p.lastName}</td>
++        `;
++        tbody.appendChild(tr);
++    });
++}
++
++function filterProfessors() {
++    const subject = document.getElementById("subjectFilter").value.toLowerCase();
++    const firstName = document.getElementById("firstNameFilter").value.toLowerCase();
++    const lastName = document.getElementById("lastNameFilter").value.toLowerCase();
++    const formMaster = document.getElementById("formMasterFilter").value;
++
++    const filtered = professors.filter(p => {
++        const matchesSubject = subject === "" || p.subject.toLowerCase().includes(subject);
++        const matchesFirst = firstName === "" || p.firstName.toLowerCase().includes(firstName);
++        const matchesLast = lastName === "" || p.lastName.toLowerCase().includes(lastName);
++        const matchesFormMaster = formMaster === "" || p.is_form_master === (formMaster === "true");
++        return matchesSubject && matchesFirst && matchesLast && matchesFormMaster;
++    });
++
++    renderProfessorTable(filtered);
++}
++
+Index: src/main/resources/static/grades.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Gradebook</title>\r\n    <link rel=\"stylesheet\" href=\"css/style.css\">\r\n</head>\r\n<body onload=\"loadGrades()\">\r\n<div class=\"side-menu\">\r\n    <a href=\"dashboard.html\">Dashboard</a>\r\n    <a href=\"students.html\">Students</a>\r\n    <a href=\"teachers.html\">Teachers</a>\r\n    <a href=\"grades.html\">Gradebook</a>\r\n    <a href=\"#\" onclick=\"logout()\">Logout</a>\r\n</div>\r\n<div class=\"main\">\r\n    <h2>Gradebook</h2>\r\n    <table id=\"gradesTable\"></table>\r\n</div>\r\n<script src=\"js/auth.js\"></script>\r\n<script src=\"js/grades.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/grades.html b/src/main/resources/static/grades.html
+--- a/src/main/resources/static/grades.html	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/src/main/resources/static/grades.html	(date 1746019827428)
+@@ -8,7 +8,7 @@
+ <div class="side-menu">
+     <a href="dashboard.html">Dashboard</a>
+     <a href="students.html">Students</a>
+-    <a href="teachers.html">Teachers</a>
++    <a href="professors.html">Professors</a>
+     <a href="grades.html">Gradebook</a>
+     <a href="#" onclick="logout()">Logout</a>
+ </div>
+Index: src/main/resources/static/teachers.html
+===================================================================
+diff --git a/src/main/resources/static/teachers.html b/src/main/resources/static/professors.html
+rename from src/main/resources/static/teachers.html
+rename to src/main/resources/static/professors.html
+--- a/src/main/resources/static/teachers.html	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/src/main/resources/static/professors.html	(date 1746020672531)
+@@ -1,23 +1,56 @@
+ <!DOCTYPE html>
+-<html>
++<html lang="en">
+ <head>
+-    <title>Teachers</title>
++    <title>Professors</title>
+     <link rel="stylesheet" href="css/style.css">
+ </head>
+-<body onload="loadTeachers()">
++<body onload="loadProfessors()">
+ <div class="side-menu">
+     <a href="dashboard.html">Dashboard</a>
+     <a href="students.html">Students</a>
+-    <a href="teachers.html">Teachers</a>
++    <a href="professors.html">Professors</a>
+     <a href="grades.html">Gradebook</a>
+     <a href="#" onclick="logout()">Logout</a>
+ </div>
++
+ <div class="main">
+-    <h2>Teachers</h2>
+-    <input type="text" id="teacherFilter" placeholder="Filter by name..." oninput="filterTeachers()" />
+-    <ul id="teacherList"></ul>
++    <h2>Professors</h2>
++
++    <div>
++        <label>Subject:</label>
++        <input type="text" id="subjectFilter" placeholder="Filter by subject">
++
++        <label>First Name:</label>
++        <input type="text" id="firstNameFilter" placeholder="Filter by first name">
++
++        <label>Last Name:</label>
++        <input type="text" id="lastNameFilter" placeholder="Filter by last name">
++
++        <label>Is Form Master:</label>
++        <select id="formMasterFilter">
++            <option value="">All</option>
++            <option value="true">Yes</option>
++            <option value="false">No</option>
++        </select>
++
++        <button onclick="filterProfessors()">Filter</button>
++    </div>
++
++    <table>
++        <thead>
++        <tr>
++            <th>Form Master</th>
++            <th>Subject</th>
++            <th>Professor ID</th>
++            <th>First Name</th>
++            <th>Last Name</th>
++        </tr>
++        </thead>
++        <tbody id="professorTableBody"></tbody>
++    </table>
+ </div>
++
+ <script src="js/auth.js"></script>
+-<script src="js/teachers.js"></script>
++<script src="js/professors.js"></script>
+ </body>
+ </html>
+Index: src/main/resources/static/js/main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/js/main.js b/src/main/resources/static/js/main.js
+deleted file mode 100644
+--- a/src/main/resources/static/js/main.js	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ /dev/null	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
+@@ -1,29 +0,0 @@
+-const content = document.getElementById('content');
+-
+-function navigateTo(page) {
+-    switch (page) {
+-        case 'dashboard':
+-            content.innerHTML = '<h2>Dashboard</h2><p>Welcome!</p>';
+-            break;
+-        case 'students':
+-            content.innerHTML = '<h2>Students</h2>';
+-            break;
+-        case 'teachers':
+-            content.innerHTML = '<h2>Teachers</h2>';
+-            break;
+-        case 'grades':
+-            content.innerHTML = '<h2>Grades</h2>';
+-            break;
+-        default:
+-            content.innerHTML = '<h2>Page not found</h2>';
+-    }
+-}
+-
+-// Example: create simple nav links dynamically
+-const sideMenu = document.getElementById('side-menu');
+-sideMenu.innerHTML = `
+-    <button onclick="navigateTo('dashboard')">Dashboard</button>
+-    <button onclick="navigateTo('students')">Students</button>
+-    <button onclick="navigateTo('teachers')">Teachers</button>
+-    <button onclick="navigateTo('grades')">Grades</button>
+-`;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Professors</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="loadProfessors()">
+<div class="side-menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="professors.html">Professors</a>
+    <a href="grades.html">Gradebook</a>
+    <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div class="main">
+    <h2>Professors</h2>
+
+    <div>
+        <label>Subject:</label>
+        <input type="text" id="subjectFilter" placeholder="Filter by subject">
+
+        <label>First Name:</label>
+        <input type="text" id="firstNameFilter" placeholder="Filter by first name">
+
+        <label>Last Name:</label>
+        <input type="text" id="lastNameFilter" placeholder="Filter by last name">
+
+        <label>Is Form Master:</label>
+        <select id="formMasterFilter">
+            <option value="">All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+
+        <button onclick="filterProfessors()">Filter</button>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Form Master</th>
+            <th>Subject</th>
+            <th>Professor ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        </thead>
+        <tbody id="professorTableBody"></tbody>
+    </table>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/professors.js"></script>
+</body>
+</html>
