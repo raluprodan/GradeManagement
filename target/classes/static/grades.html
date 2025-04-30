@@ -12,10 +12,40 @@
     <a href="grades.html">Gradebook</a>
     <a href="#" onclick="logout()">Logout</a>
 </div>
+
 <div class="main">
     <h2>Gradebook</h2>
-    <table id="gradesTable"></table>
+
+    <div>
+        <label>Last Name:</label>
+        <input type="text" id="lastNameFilter">
+
+        <label>First Name:</label>
+        <input type="text" id="firstNameFilter">
+
+        <label>Year:</label>
+        <select id="yearFilter">
+            <option value="">All</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <button onclick="filterGrades()">Filter</button>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Year</th>
+            <th>Grades</th>
+        </tr>
+        </thead>
+        <tbody id="gradesTableBody"></tbody>
+    </table>
 </div>
+
 <script src="js/auth.js"></script>
 <script src="js/grades.js"></script>
 </body>
