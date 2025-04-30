@@ -27,4 +27,6 @@ public class Student extends User {
 
     @Enumerated(EnumType.STRING) // If Role is an enum
     private Role role= Role.valueOf("STUDENT");
+
+
 }

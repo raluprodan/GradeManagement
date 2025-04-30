@@ -12,6 +12,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,9 +29,9 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
         if (userRepo.findByEmail(request.getEmail()).isPresent()) {
-            return "Email already in use!";
+            return ResponseEntity.badRequest().body("Email already in use!");
         }
 
         User user = User.builder()
@@ -41,11 +44,11 @@ public class AuthController {
                 .build();
 
         userRepo.save(user);
-        return "User registered successfully!";
+        return ResponseEntity.ok("User registered successfully!");
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public Map<String, String> login(@RequestBody LoginRequest request) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -55,7 +58,14 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return jwtService.generateToken(request.getEmail());
+        User user = userRepo.findByEmail(request.getEmail()).orElseThrow();
+
+//        return jwtService.generateToken(request.getEmail());
+       // String token = jwtService.generateToken(request.getEmail());
+        String token = jwtService.generateToken(user.getEmail(), user.getRole().name()); // 👈 FIXED LINE
+        return Map.of(
+                "token", token,
+                "role", user.getRole().name());
     }
 
 }

@@ -30,4 +30,6 @@ public class ProfessorController {
     public void createProfessor(@RequestBody ProfessorDTO professorDTO){
         professorService.createProfessor(professorDTO);
     }
+
+
 }

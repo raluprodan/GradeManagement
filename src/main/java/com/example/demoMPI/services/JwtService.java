@@ -13,9 +13,10 @@ public class JwtService {
 
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256); // random secret key generated
 
-    public String generateToken(String email) {
+    public String generateToken(String email, String role) {
         return Jwts.builder()
                 .setSubject(email)
+                .claim("role", role)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // token valid 10 hours
                 .signWith(key)
