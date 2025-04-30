@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-21">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/grades.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/professor_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/professor_register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/students.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/grades.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/teachers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/professor_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/professor_register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/students.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/teachers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/grades.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/grades.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="GM-21" />
+        <entry key="$PROJECT_DIR$" value="raluk" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +86,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.DemoMpiApplication.executor": "Run",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "GM-21",
+    "git-widget-placeholder": "GM-22",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
