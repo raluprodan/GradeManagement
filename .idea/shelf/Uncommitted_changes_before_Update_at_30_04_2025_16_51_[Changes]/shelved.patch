@@ -1,0 +1,2609 @@
+Index: src/main/java/com/example/demoMPI/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\nimport jakarta.persistence.*;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Builder;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\nimport org.springframework.security.core.GrantedAuthority;\r\nimport org.springframework.security.core.authority.SimpleGrantedAuthority;\r\nimport org.springframework.security.core.userdetails.UserDetails;\r\n\r\nimport java.util.Collection;\r\nimport java.util.List;\r\n@Data\r\n@Builder\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Inheritance(strategy = InheritanceType.JOINED)\r\n@Table(name=\"users\")\r\n@Entity\r\npublic class User {\r\n\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.AUTO)\r\n    private Long id;\r\n    private String firstName;\r\n    private String lastName;\r\n    private String email;\r\n    private String phone;\r\n    private String password;\r\n\r\n    @Enumerated(EnumType.STRING)\r\n    private Role role;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/User.java b/src/main/java/com/example/demoMPI/User.java
+--- a/src/main/java/com/example/demoMPI/User.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/User.java	(date 1746020998304)
+@@ -1,4 +1,5 @@
+ package com.example.demoMPI;
++
+ import jakarta.persistence.*;
+ import lombok.AllArgsConstructor;
+ import lombok.Builder;
+@@ -10,6 +11,15 @@
+ 
+ import java.util.Collection;
+ import java.util.List;
++
++/**
++ * Represents a user entity in the system.
++ * <p>
++ * The {@link User} class is a base class for all types of users, including professors and students.
++ * It contains common user information such as name, email, phone, and password.
++ * This class is extended by both {@link Professor} and {@link Student}.
++ * </p>
++ */
+ @Data
+ @Builder
+ @NoArgsConstructor
+@@ -19,17 +29,41 @@
+ @Entity
+ public class User {
+ 
++    /**
++     * The unique identifier for the user.
++     */
+     @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+     private Long id;
++
++    /**
++     * The first name of the user.
++     */
+     private String firstName;
++
++    /**
++     * The last name of the user.
++     */
+     private String lastName;
++
++    /**
++     * The email address of the user.
++     */
+     private String email;
++
++    /**
++     * The phone number of the user.
++     */
+     private String phone;
++
++    /**
++     * The password for the user.
++     */
+     private String password;
+ 
++    /**
++     * The role of the user (e.g., {@link Role#STUDENT} or {@link Role#PROFESSOR}).
++     */
+     @Enumerated(EnumType.STRING)
+     private Role role;
+-
+-
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/example/demoMPI/YearOfClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\npublic enum YearOfClass {\r\n    FIRST, SECOND, THIRD, FOURTH\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/YearOfClass.java b/src/main/java/com/example/demoMPI/YearOfClass.java
+--- a/src/main/java/com/example/demoMPI/YearOfClass.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/YearOfClass.java	(date 1746020998317)
+@@ -1,5 +1,36 @@
+ package com.example.demoMPI;
+ 
++/**
++ * Represents the year of study for a student.
++ * <p>
++ * The {@link YearOfClass} enum is used to denote the year in which a student is currently enrolled.
++ * It can take one of the following values:
++ * <ul>
++ *   <li>{@link #FIRST} - First year of study.</li>
++ *   <li>{@link #SECOND} - Second year of study.</li>
++ *   <li>{@link #THIRD} - Third year of study.</li>
++ *   <li>{@link #FOURTH} - Fourth year of study.</li>
++ * </ul>
++ * </p>
++ */
+ public enum YearOfClass {
+-    FIRST, SECOND, THIRD, FOURTH
++    /**
++     * The first year of study.
++     */
++    FIRST,
++
++    /**
++     * The second year of study.
++     */
++    SECOND,
++
++    /**
++     * The third year of study.
++     */
++    THIRD,
++
++    /**
++     * The fourth year of study.
++     */
++    FOURTH
+ }
+Index: src/main/java/com/example/demoMPI/Role.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\npublic enum Role {\r\n    PROFESSOR,\r\n    STUDENT\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/Role.java b/src/main/java/com/example/demoMPI/Role.java
+--- a/src/main/java/com/example/demoMPI/Role.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/Role.java	(date 1746020998330)
+@@ -1,6 +1,23 @@
+ package com.example.demoMPI;
+ 
++/**
++ * Enum representing the different roles a user can have in the system.
++ * <p>
++ * This enum defines two possible roles:
++ * </p>
++ * <ul>
++ *     <li>{@link #PROFESSOR} - Represents a professor in the system.</li>
++ *     <li>{@link #STUDENT} - Represents a student in the system.</li>
++ * </ul>
++ */
+ public enum Role {
++    /**
++     * Represents a professor role in the system.
++     */
+     PROFESSOR,
++
++    /**
++     * Represents a student role in the system.
++     */
+     STUDENT
+ }
+Index: src/main/java/com/example/demoMPI/Grade.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Builder;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\n@Builder\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Entity\r\n@Table(name = \"grades\")\r\npublic class Grade {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.AUTO)\r\n    private Long id;\r\n    @ManyToOne\r\n    @JoinColumn(name = \"assigner_id\")\r\n    private Professor assigner;\r\n    @ManyToOne\r\n    @JoinColumn(name = \"assignee_id\")\r\n    private Student assignee;\r\n    private Date date;\r\n    private double grade;\r\n    @ManyToOne\r\n    @JoinColumn(name = \"course_id\")\r\n    private Course course;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/Grade.java b/src/main/java/com/example/demoMPI/Grade.java
+--- a/src/main/java/com/example/demoMPI/Grade.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/Grade.java	(date 1746020998344)
+@@ -8,6 +8,13 @@
+ 
+ import java.util.Date;
+ 
++/**
++ * Represents a grade assigned to a student in a specific course.
++ * <p>
++ * This entity stores information about the grade, the student who received it,
++ * the professor who assigned it, the date it was assigned, and the associated course.
++ * </p>
++ */
+ @Data
+ @Builder
+ @NoArgsConstructor
+@@ -15,17 +22,41 @@
+ @Entity
+ @Table(name = "grades")
+ public class Grade {
++
++    /**
++     * Unique identifier for the grade entry.
++     */
+     @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+     private Long id;
++
++    /**
++     * The professor who assigned the grade.
++     */
+     @ManyToOne
+     @JoinColumn(name = "assigner_id")
+     private Professor assigner;
++
++    /**
++     * The student who received the grade.
++     */
+     @ManyToOne
+     @JoinColumn(name = "assignee_id")
+     private Student assignee;
++
++    /**
++     * The date when the grade was assigned.
++     */
+     private Date date;
++
++    /**
++     * The grade value assigned to the student.
++     */
+     private double grade;
++
++    /**
++     * The course associated with this grade.
++     */
+     @ManyToOne
+     @JoinColumn(name = "course_id")
+     private Course course;
+Index: src/main/java/com/example/demoMPI/Student.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\nimport jakarta.persistence.*;\r\nimport lombok.*;\r\nimport org.hibernate.annotations.ColumnDefault;\r\n\r\nimport java.util.List;\r\n\r\n\r\n@EqualsAndHashCode(callSuper = true)\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Entity\r\n@Table(name = \"students\")\r\npublic class Student extends User {\r\n    private Long id;\r\n    private String registryNumber;\r\n    private YearOfClass year;\r\n    @ManyToMany\r\n    @JoinTable(\r\n            name = \"student_course\",\r\n            joinColumns = @JoinColumn(name = \"student_id\"),\r\n            inverseJoinColumns = @JoinColumn(name = \"course_id\")\r\n    )\r\n    private List<Course> courseList;\r\n    private boolean activeYear;\r\n\r\n    @Enumerated(EnumType.STRING) // If Role is an enum\r\n    private Role role= Role.valueOf(\"STUDENT\");\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/Student.java b/src/main/java/com/example/demoMPI/Student.java
+--- a/src/main/java/com/example/demoMPI/Student.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/Student.java	(date 1746020998357)
+@@ -1,11 +1,18 @@
+ package com.example.demoMPI;
++
+ import jakarta.persistence.*;
+ import lombok.*;
+ import org.hibernate.annotations.ColumnDefault;
+ 
+ import java.util.List;
+ 
+-
++/**
++ * Represents a student entity in the system.
++ * <p>
++ * The {@link Student} class extends {@link User} and represents a student in the system.
++ * It contains information about the student's courses, their year, and their active status.
++ * </p>
++ */
+ @EqualsAndHashCode(callSuper = true)
+ @Data
+ @NoArgsConstructor
+@@ -13,9 +20,28 @@
+ @Entity
+ @Table(name = "students")
+ public class Student extends User {
++
++    /**
++     * The unique identifier for the student.
++     */
+     private Long id;
++
++    /**
++     * The student's unique registry number.
++     */
+     private String registryNumber;
++
++    /**
++     * The year of class the student belongs to.
++     */
+     private YearOfClass year;
++
++    /**
++     * The list of courses the student is enrolled in.
++     * <p>
++     * This is a many-to-many relationship with the {@link Course} entity.
++     * </p>
++     */
+     @ManyToMany
+     @JoinTable(
+             name = "student_course",
+@@ -23,10 +49,15 @@
+             inverseJoinColumns = @JoinColumn(name = "course_id")
+     )
+     private List<Course> courseList;
++
++    /**
++     * Indicates if the student is in an active academic year.
++     */
+     private boolean activeYear;
+ 
+-    @Enumerated(EnumType.STRING) // If Role is an enum
+-    private Role role= Role.valueOf("STUDENT");
+-
+-
++    /**
++     * The role of the user, which is {@link Role#STUDENT} for this entity.
++     */
++    @Enumerated(EnumType.STRING)
++    private Role role = Role.valueOf("STUDENT");
+ }
+Index: src/main/java/com/example/demoMPI/Professor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.*;\r\nimport org.hibernate.annotations.ColumnDefault;\r\nimport java.util.List;\r\n\r\n@EqualsAndHashCode(callSuper = true)\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Entity\r\n@Table(name = \"professors\")\r\npublic class Professor extends User{\r\n    @ManyToMany\r\n    @JoinTable(\r\n            name = \"professor_courses\",\r\n            joinColumns = @JoinColumn(name = \"professor_id\"),\r\n            inverseJoinColumns = @JoinColumn(name = \"course_id\")\r\n    )\r\n    private List<Course> courses;\r\n    @Enumerated(EnumType.STRING)\r\n    private Role role= Role.valueOf(\"PROFESSOR\");\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/Professor.java b/src/main/java/com/example/demoMPI/Professor.java
+--- a/src/main/java/com/example/demoMPI/Professor.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/Professor.java	(date 1746020998368)
+@@ -5,13 +5,25 @@
+ import org.hibernate.annotations.ColumnDefault;
+ import java.util.List;
+ 
++/**
++ * Represents a professor who is responsible for teaching courses and assigning grades.
++ * <p>
++ * This entity extends from the {@link User} class and includes additional information
++ * related to the courses the professor is teaching and their role in the system.
++ * </p>
++ */
+ @EqualsAndHashCode(callSuper = true)
+ @Data
+ @NoArgsConstructor
+ @AllArgsConstructor
+ @Entity
+ @Table(name = "professors")
+-public class Professor extends User{
++public class Professor extends User {
++
++    /**
++     * The list of courses taught by the professor.
++     * This is a many-to-many relationship with the {@link Course} entity.
++     */
+     @ManyToMany
+     @JoinTable(
+             name = "professor_courses",
+@@ -19,8 +31,11 @@
+             inverseJoinColumns = @JoinColumn(name = "course_id")
+     )
+     private List<Course> courses;
++
++    /**
++     * The role of the user, which is set to "PROFESSOR" by default.
++     */
+     @Enumerated(EnumType.STRING)
+-    private Role role= Role.valueOf("PROFESSOR");
++    private Role role = Role.valueOf("PROFESSOR");
+ 
+-
+ }
+Index: src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.dtos.ProfessorDTO;\r\nimport org.springframework.stereotype.Component;\r\n\r\n@Component\r\npublic class ProfessorMapperImpl implements ProfessorMapper {\r\n    @Override\r\n    public Professor toProfessor(ProfessorDTO professorDTO) {\r\n        if(professorDTO == null)\r\n            throw new IllegalArgumentException(\"ProfessorDTO cannot be null\");\r\n        Professor professor = new Professor();\r\n        professor.setCourses(professorDTO.getCourses());\r\n        return professor;\r\n    }\r\n\r\n    @Override\r\n    public ProfessorDTO toProfessorDTO(Professor professor) {\r\n        if(professor == null)\r\n            throw new IllegalArgumentException(\"Professor cannot be null\");\r\n        ProfessorDTO professorDTO = new ProfessorDTO();\r\n        professorDTO.setCourses(professor.getCourses());\r\n        return professorDTO;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java b/src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java
+--- a/src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java	(date 1746020998378)
+@@ -4,21 +4,42 @@
+ import com.example.demoMPI.dtos.ProfessorDTO;
+ import org.springframework.stereotype.Component;
+ 
++/**
++ * Implementation of the ProfessorMapper interface.
++ * This class provides methods to convert between the Professor entity and ProfessorDTO.
++ */
+ @Component
+ public class ProfessorMapperImpl implements ProfessorMapper {
++
++    /**
++     * Converts a ProfessorDTO to a Professor entity.
++     *
++     * @param professorDTO the ProfessorDTO to convert
++     * @return the corresponding Professor entity
++     * @throws IllegalArgumentException if professorDTO is null
++     */
+     @Override
+     public Professor toProfessor(ProfessorDTO professorDTO) {
+-        if(professorDTO == null)
++        if (professorDTO == null) {
+             throw new IllegalArgumentException("ProfessorDTO cannot be null");
++        }
+         Professor professor = new Professor();
+         professor.setCourses(professorDTO.getCourses());
+         return professor;
+     }
+ 
++    /**
++     * Converts a Professor entity to a ProfessorDTO.
++     *
++     * @param professor the Professor entity to convert
++     * @return the corresponding ProfessorDTO
++     * @throws IllegalArgumentException if professor is null
++     */
+     @Override
+     public ProfessorDTO toProfessorDTO(Professor professor) {
+-        if(professor == null)
++        if (professor == null) {
+             throw new IllegalArgumentException("Professor cannot be null");
++        }
+         ProfessorDTO professorDTO = new ProfessorDTO();
+         professorDTO.setCourses(professor.getCourses());
+         return professorDTO;
+Index: src/main/java/com/example/demoMPI/mappers/StudentMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.dtos.StudentDTO;\r\n\r\nimport org.springframework.stereotype.Component;\r\n\r\npublic interface StudentMapper {\r\n    public Student toStudent(StudentDTO studentDTO);\r\n    public StudentDTO toStudentDTO(Student student);\r\n    // <dependency>\r\n//\t\t\t<groupId>org.springframework.boot</groupId>\r\n//\t\t\t<artifactId>spring-boot-starter-security</artifactId>\r\n    //\t\t</dependency>\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/StudentMapper.java b/src/main/java/com/example/demoMPI/mappers/StudentMapper.java
+--- a/src/main/java/com/example/demoMPI/mappers/StudentMapper.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/StudentMapper.java	(date 1746020998389)
+@@ -2,14 +2,29 @@
+ 
+ import com.example.demoMPI.Student;
+ import com.example.demoMPI.dtos.StudentDTO;
+-
+ import org.springframework.stereotype.Component;
+ 
++/**
++ * Mapper interface for converting between the Student entity and StudentDTO.
++ */
++@Component
+ public interface StudentMapper {
+-    public Student toStudent(StudentDTO studentDTO);
+-    public StudentDTO toStudentDTO(Student student);
+-    // <dependency>
+-//			<groupId>org.springframework.boot</groupId>
+-//			<artifactId>spring-boot-starter-security</artifactId>
+-    //		</dependency>
++
++    /**
++     * Converts a StudentDTO to a Student entity.
++     *
++     * @param studentDTO the StudentDTO to convert
++     * @return the corresponding Student entity
++     * @throws IllegalArgumentException if studentDTO is null
++     */
++    Student toStudent(StudentDTO studentDTO);
++
++    /**
++     * Converts a Student entity to a StudentDTO.
++     *
++     * @param student the Student entity to convert
++     * @return the corresponding StudentDTO
++     * @throws IllegalArgumentException if student is null
++     */
++    StudentDTO toStudentDTO(Student student);
+ }
+Index: src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.dtos.ProfessorDTO;\r\nimport com.example.demoMPI.dtos.StudentDTO;\r\n\r\npublic interface ProfessorMapper {\r\n    public Professor toProfessor(ProfessorDTO professorDTO);\r\n    public ProfessorDTO toProfessorDTO(Professor professor);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java b/src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java
+--- a/src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java	(date 1746020998400)
+@@ -4,7 +4,26 @@
+ import com.example.demoMPI.dtos.ProfessorDTO;
+ import com.example.demoMPI.dtos.StudentDTO;
+ 
++/**
++ * Interface for mapping between Professor and ProfessorDTO objects.
++ * Provides methods to convert between the domain entity (Professor)
++ * and the data transfer object (ProfessorDTO).
++ */
+ public interface ProfessorMapper {
+-    public Professor toProfessor(ProfessorDTO professorDTO);
+-    public ProfessorDTO toProfessorDTO(Professor professor);
++
++    /**
++     * Converts a ProfessorDTO to a Professor entity.
++     *
++     * @param professorDTO the ProfessorDTO to convert
++     * @return the corresponding Professor entity
++     */
++    Professor toProfessor(ProfessorDTO professorDTO);
++
++    /**
++     * Converts a Professor entity to a ProfessorDTO.
++     *
++     * @param professor the Professor entity to convert
++     * @return the corresponding ProfessorDTO
++     */
++    ProfessorDTO toProfessorDTO(Professor professor);
+ }
+Index: src/main/java/com/example/demoMPI/services/JwtService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.services;\r\n\r\nimport io.jsonwebtoken.Jwts;\r\nimport io.jsonwebtoken.SignatureAlgorithm;\r\nimport io.jsonwebtoken.security.Keys;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.security.Key;\r\nimport java.util.Date;\r\n\r\n@Service\r\npublic class JwtService {\r\n\r\n    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256); // random secret key generated\r\n\r\n    public String generateToken(String email, String role) {\r\n        return Jwts.builder()\r\n                .setSubject(email)\r\n                .claim(\"role\", role)\r\n                .setIssuedAt(new Date(System.currentTimeMillis()))\r\n                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // token valid 10 hours\r\n                .signWith(key)\r\n                .compact();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/services/JwtService.java b/src/main/java/com/example/demoMPI/services/JwtService.java
+--- a/src/main/java/com/example/demoMPI/services/JwtService.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/services/JwtService.java	(date 1746020998410)
+@@ -8,17 +8,29 @@
+ import java.security.Key;
+ import java.util.Date;
+ 
++/**
++ * Service class for handling JWT (JSON Web Token) creation.
++ * Provides functionality to generate JWT tokens for authentication and authorization purposes.
++ */
+ @Service
+ public class JwtService {
+ 
+     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256); // random secret key generated
+ 
++    /**
++     * Generates a JWT token containing the user's email and role.
++     * The token is signed with a secret key and has an expiration time of 10 hours.
++     *
++     * @param email the email of the user to be included in the token's subject
++     * @param role the role of the user, to be included as a claim
++     * @return a JWT token as a String
++     */
+     public String generateToken(String email, String role) {
+         return Jwts.builder()
+                 .setSubject(email)
+                 .claim("role", role)
+                 .setIssuedAt(new Date(System.currentTimeMillis()))
+-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // token valid 10 hours
++                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // token valid for 10 hours
+                 .signWith(key)
+                 .compact();
+     }
+Index: src/main/java/com/example/demoMPI/mappers/CourseMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport com.example.demoMPI.dtos.CourseDTO;\r\n\r\npublic interface CourseMapper {\r\n    Course toCourse(CourseDTO courseDTO);\r\n    CourseDTO toCourseDTO(Course course);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/CourseMapper.java b/src/main/java/com/example/demoMPI/mappers/CourseMapper.java
+--- a/src/main/java/com/example/demoMPI/mappers/CourseMapper.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/CourseMapper.java	(date 1746020998410)
+@@ -3,7 +3,25 @@
+ import com.example.demoMPI.Course;
+ import com.example.demoMPI.dtos.CourseDTO;
+ 
++/**
++ * Interface for mapping between Course and CourseDTO.
++ * Provides methods to convert between entity and DTO representations of a course.
++ */
+ public interface CourseMapper {
++
++    /**
++     * Converts a CourseDTO to a Course entity.
++     *
++     * @param courseDTO the CourseDTO to convert
++     * @return the corresponding Course entity
++     */
+     Course toCourse(CourseDTO courseDTO);
++
++    /**
++     * Converts a Course entity to a CourseDTO.
++     *
++     * @param course the Course entity to convert
++     * @return the corresponding CourseDTO
++     */
+     CourseDTO toCourseDTO(Course course);
+ }
+Index: src/main/java/com/example/demoMPI/services/ProfessorService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.services;\r\n\r\n\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.dtos.ProfessorDTO;\r\nimport com.example.demoMPI.mappers.ProfessorMapper;\r\nimport com.example.demoMPI.repos.ProfessorRepo;\r\nimport jakarta.transaction.Transactional;\r\nimport lombok.Getter;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.Setter;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\n@Transactional\r\n@RequiredArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class ProfessorService {\r\n    private final ProfessorMapper professorMapper;\r\n    private final ProfessorRepo professorRepo;\r\n    public List<Professor> getAllProfessors() {\r\n        return professorRepo.getAllProfessors();\r\n    }\r\n    public void createProfessor(ProfessorDTO professorDTO) {\r\n        Professor professor= professorMapper.toProfessor(professorDTO);\r\n        professorRepo.save(professor);\r\n    }\r\n    public Professor getProfessor(Long id) {\r\n        return professorRepo.findByID(id);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/services/ProfessorService.java b/src/main/java/com/example/demoMPI/services/ProfessorService.java
+--- a/src/main/java/com/example/demoMPI/services/ProfessorService.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/services/ProfessorService.java	(date 1746020998434)
+@@ -1,6 +1,5 @@
+ package com.example.demoMPI.services;
+ 
+-
+ import com.example.demoMPI.Professor;
+ import com.example.demoMPI.dtos.ProfessorDTO;
+ import com.example.demoMPI.mappers.ProfessorMapper;
+@@ -13,21 +12,45 @@
+ 
+ import java.util.List;
+ 
++/**
++ * Service class responsible for handling operations related to professors.
++ * Provides functionality to manage professors, including creating, retrieving, and listing them.
++ */
+ @Service
+ @Transactional
+ @RequiredArgsConstructor
+ @Getter
+ @Setter
+ public class ProfessorService {
++
+     private final ProfessorMapper professorMapper;
+     private final ProfessorRepo professorRepo;
++
++    /**
++     * Retrieves a list of all professors from the repository.
++     *
++     * @return a List of Professor objects
++     */
+     public List<Professor> getAllProfessors() {
+         return professorRepo.getAllProfessors();
+     }
++
++    /**
++     * Creates a new professor from the provided ProfessorDTO and saves it to the repository.
++     *
++     * @param professorDTO the DTO containing the professor's details
++     */
+     public void createProfessor(ProfessorDTO professorDTO) {
+-        Professor professor= professorMapper.toProfessor(professorDTO);
++        Professor professor = professorMapper.toProfessor(professorDTO);
+         professorRepo.save(professor);
+     }
++
++    /**
++     * Retrieves a professor by their ID.
++     *
++     * @param id the ID of the professor to retrieve
++     * @return the Professor object corresponding to the provided ID
++     */
+     public Professor getProfessor(Long id) {
+         return professorRepo.findByID(id);
+     }
+Index: src/main/java/com/example/demoMPI/services/GradeService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.services;\r\n\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.dtos.GradeDTO;\r\nimport com.example.demoMPI.mappers.GradeMapper;\r\nimport com.example.demoMPI.repos.GradeRepo;\r\nimport jakarta.transaction.Transactional;\r\nimport lombok.Getter;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.Setter;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\n@Transactional\r\n@RequiredArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class GradeService {\r\n    private final GradeMapper gradeMapper;\r\n    private final GradeRepo gradeRepo;\r\n    private final StudentService studentRepo;\r\n    public List<Grade> findAllGradesOfStudent(Student student) {\r\n        return gradeRepo.findByAssignee(student);\r\n    }\r\n    public void createGrade(GradeDTO gradeDTO) {\r\n        Grade grade=gradeMapper.toGrade(gradeDTO);\r\n    }\r\n    public void deleteGrade(Grade grade) {\r\n        gradeRepo.delete(grade);\r\n    }\r\n    public Grade findGradeById(Long id) {\r\n        return gradeRepo.findByID(id);\r\n    }\r\n    public void updateGrade(Grade grade, double newGr) {\r\n        grade.setGrade(newGr);\r\n        gradeRepo.save(grade);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/services/GradeService.java b/src/main/java/com/example/demoMPI/services/GradeService.java
+--- a/src/main/java/com/example/demoMPI/services/GradeService.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/services/GradeService.java	(date 1746020998445)
+@@ -13,29 +13,68 @@
+ 
+ import java.util.List;
+ 
++/**
++ * Service class for managing grades.
++ * Provides methods for creating, deleting, updating, and retrieving grades.
++ */
+ @Service
+ @Transactional
+ @RequiredArgsConstructor
+ @Getter
+ @Setter
+ public class GradeService {
++
+     private final GradeMapper gradeMapper;
+     private final GradeRepo gradeRepo;
+     private final StudentService studentRepo;
++
++    /**
++     * Finds all grades assigned to a specific student.
++     *
++     * @param student the student whose grades are to be retrieved
++     * @return a list of grades assigned to the student
++     */
+     public List<Grade> findAllGradesOfStudent(Student student) {
+         return gradeRepo.findByAssignee(student);
+     }
++
++    /**
++     * Creates a new grade based on the provided {@link GradeDTO}.
++     *
++     * @param gradeDTO the data transfer object containing grade information
++     */
+     public void createGrade(GradeDTO gradeDTO) {
+-        Grade grade=gradeMapper.toGrade(gradeDTO);
++        Grade grade = gradeMapper.toGrade(gradeDTO);
++        gradeRepo.save(grade); // Save the created grade
+     }
++
++    /**
++     * Deletes a specific grade.
++     *
++     * @param grade the grade to be deleted
++     */
+     public void deleteGrade(Grade grade) {
+         gradeRepo.delete(grade);
+     }
++
++    /**
++     * Finds a grade by its ID.
++     *
++     * @param id the ID of the grade
++     * @return the {@link Grade} with the specified ID
++     */
+     public Grade findGradeById(Long id) {
+         return gradeRepo.findByID(id);
+     }
++
++    /**
++     * Updates the grade with a new value.
++     *
++     * @param grade the grade to be updated
++     * @param newGr the new grade value
++     */
+     public void updateGrade(Grade grade, double newGr) {
+         grade.setGrade(newGr);
+-        gradeRepo.save(grade);
++        gradeRepo.save(grade); // Save the updated grade
+     }
+ }
+Index: src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.dtos.GradeDTO;\r\nimport org.springframework.stereotype.Component;\r\n\r\n@Component\r\npublic class GradeMapperImpl implements GradeMapper {\r\n    @Override\r\n    public Grade toGrade(GradeDTO gradeDTO) {\r\n        if(gradeDTO == null) {\r\n            throw new IllegalArgumentException(\"GradeDTO cannot be null!\");\r\n        }\r\n        Grade grade = new Grade();\r\n        grade.setGrade(gradeDTO.getGrade());\r\n        //grade.setCourse(gradeDTO.getCourse());\r\n        grade.setDate(gradeDTO.getDate());\r\n        grade.setAssigner(gradeDTO.getAssigner());\r\n        grade.setAssignee(gradeDTO.getAssignee());\r\n        return grade;\r\n    }\r\n\r\n    @Override\r\n    public GradeDTO toGradeDTO(Grade grade) {\r\n        if(grade == null) {\r\n            throw new IllegalArgumentException(\"Grade cannot be null!\");\r\n        }\r\n        GradeDTO gradeDTO = new GradeDTO();\r\n        gradeDTO.setGrade(grade.getGrade());\r\n        //gradeDTO.setCourse(grade.getCourse());\r\n        gradeDTO.setDate(grade.getDate());\r\n        gradeDTO.setAssigner(grade.getAssigner());\r\n        gradeDTO.setAssignee(grade.getAssignee());\r\n        return gradeDTO;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java b/src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java
+--- a/src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java	(date 1746020998457)
+@@ -4,8 +4,20 @@
+ import com.example.demoMPI.dtos.GradeDTO;
+ import org.springframework.stereotype.Component;
+ 
++/**
++ * Implementation of the GradeMapper interface.
++ * Provides the conversion between Grade and GradeDTO objects.
++ */
+ @Component
+ public class GradeMapperImpl implements GradeMapper {
++
++    /**
++     * Converts a GradeDTO to a Grade entity.
++     *
++     * @param gradeDTO the GradeDTO to convert
++     * @return the corresponding Grade entity
++     * @throws IllegalArgumentException if the provided GradeDTO is null
++     */
+     @Override
+     public Grade toGrade(GradeDTO gradeDTO) {
+         if(gradeDTO == null) {
+@@ -13,13 +25,20 @@
+         }
+         Grade grade = new Grade();
+         grade.setGrade(gradeDTO.getGrade());
+-        //grade.setCourse(gradeDTO.getCourse());
++        grade.setCourse(gradeDTO.getCourse());
+         grade.setDate(gradeDTO.getDate());
+         grade.setAssigner(gradeDTO.getAssigner());
+         grade.setAssignee(gradeDTO.getAssignee());
+         return grade;
+     }
+ 
++    /**
++     * Converts a Grade entity to a GradeDTO.
++     *
++     * @param grade the Grade entity to convert
++     * @return the corresponding GradeDTO
++     * @throws IllegalArgumentException if the provided Grade entity is null
++     */
+     @Override
+     public GradeDTO toGradeDTO(Grade grade) {
+         if(grade == null) {
+@@ -27,7 +46,7 @@
+         }
+         GradeDTO gradeDTO = new GradeDTO();
+         gradeDTO.setGrade(grade.getGrade());
+-        //gradeDTO.setCourse(grade.getCourse());
++        gradeDTO.setCourse(grade.getCourse());
+         gradeDTO.setDate(grade.getDate());
+         gradeDTO.setAssigner(grade.getAssigner());
+         gradeDTO.setAssignee(grade.getAssignee());
+Index: src/main/java/com/example/demoMPI/config/CorsConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.config;\r\n\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.web.servlet.config.annotation.CorsRegistry;\r\nimport org.springframework.web.servlet.config.annotation.WebMvcConfigurer;\r\n\r\n@Configuration\r\npublic class CorsConfig {\r\n\r\n    @Bean\r\n    public WebMvcConfigurer corsConfigurer() {\r\n        return new WebMvcConfigurer() {\r\n            @Override\r\n            public void addCorsMappings(CorsRegistry registry) {\r\n                registry.addMapping(\"/**\") // allow all endpoints\r\n                        .allowedOrigins(\"http://localhost:3000\", \"http://localhost:8080\",\"http://localhost:63342\") // allow your frontend URL\r\n                        .allowedMethods(\"GET\", \"POST\", \"PUT\", \"DELETE\", \"OPTIONS\")\r\n                        .allowedHeaders(\"*\")\r\n                        .allowCredentials(true);\r\n            }\r\n        };\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/config/CorsConfig.java b/src/main/java/com/example/demoMPI/config/CorsConfig.java
+--- a/src/main/java/com/example/demoMPI/config/CorsConfig.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/config/CorsConfig.java	(date 1746020998468)
+@@ -5,16 +5,29 @@
+ import org.springframework.web.servlet.config.annotation.CorsRegistry;
+ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+ 
++/**
++ * Configuration class for setting up Cross-Origin Resource Sharing (CORS).
++ */
+ @Configuration
+ public class CorsConfig {
+ 
++    /**
++     * Creates and configures a {@link WebMvcConfigurer} bean to define CORS mappings.
++     *
++     * @return a configured {@link WebMvcConfigurer} instance
++     */
+     @Bean
+     public WebMvcConfigurer corsConfigurer() {
+         return new WebMvcConfigurer() {
++            /**
++             * Adds CORS mappings to allow specific origins, methods, and headers.
++             *
++             * @param registry the {@link CorsRegistry} to configure
++             */
+             @Override
+             public void addCorsMappings(CorsRegistry registry) {
+-                registry.addMapping("/**") // allow all endpoints
+-                        .allowedOrigins("http://localhost:3000", "http://localhost:8080","http://localhost:63342") // allow your frontend URL
++                registry.addMapping("/**")
++                        .allowedOrigins("http://localhost:3000", "http://localhost:8080", "http://localhost:63342")
+                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                         .allowedHeaders("*")
+                         .allowCredentials(true);
+Index: src/main/java/com/example/demoMPI/services/StudentService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.services;\r\n\r\n\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.YearOfClass;\r\nimport com.example.demoMPI.dtos.StudentDTO;\r\nimport com.example.demoMPI.mappers.StudentMapper;\r\nimport com.example.demoMPI.repos.StudentRepo;\r\nimport jakarta.transaction.Transactional;\r\nimport lombok.Getter;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.Setter;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\n@Transactional\r\n@RequiredArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class StudentService {\r\n    private final StudentMapper studentMapper;\r\n    private final StudentRepo studentRepo;\r\n    public void createStudent(StudentDTO dto) {\r\n        Student student=studentMapper.toStudent(dto);\r\n        //System.out.println(\"Creating student with role: \" + student.getRole());\r\n        studentRepo.save(student);\r\n    }\r\n    public List<Student> listStudents() {\r\n        return studentRepo.findAll();\r\n    }\r\n    public Student getStudentByEmail(String email) {\r\n        return studentRepo.findByEmail(email);\r\n    }\r\n    public List<Student> getStudentsInYear(YearOfClass year) {\r\n        return studentRepo.findAllByYearAndActiveYear(year, true);\r\n    }\r\n    public List<Student> getStudentsByLastName(String lastName) {\r\n        return studentRepo.findByLastName(lastName);\r\n    }\r\n    public Student getStudentByRegistryNumber(String registryNumber) {\r\n        return studentRepo.findByRegistryNumber(registryNumber);\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/services/StudentService.java b/src/main/java/com/example/demoMPI/services/StudentService.java
+--- a/src/main/java/com/example/demoMPI/services/StudentService.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/services/StudentService.java	(date 1746020998479)
+@@ -1,6 +1,5 @@
+ package com.example.demoMPI.services;
+ 
+-
+ import com.example.demoMPI.Student;
+ import com.example.demoMPI.YearOfClass;
+ import com.example.demoMPI.dtos.StudentDTO;
+@@ -14,33 +13,76 @@
+ 
+ import java.util.List;
+ 
++/**
++ * Service class responsible for handling operations related to students.
++ * Provides functionality to create, retrieve, and list students.
++ */
+ @Service
+ @Transactional
+ @RequiredArgsConstructor
+ @Getter
+ @Setter
+ public class StudentService {
++
+     private final StudentMapper studentMapper;
+     private final StudentRepo studentRepo;
++
++    /**
++     * Creates a new student from the provided StudentDTO and saves it to the repository.
++     *
++     * @param dto the DTO containing the student's details
++     */
+     public void createStudent(StudentDTO dto) {
+-        Student student=studentMapper.toStudent(dto);
+-        //System.out.println("Creating student with role: " + student.getRole());
++        Student student = studentMapper.toStudent(dto);
+         studentRepo.save(student);
+     }
++
++    /**
++     * Retrieves a list of all students.
++     *
++     * @return a List of Student objects
++     */
+     public List<Student> listStudents() {
+         return studentRepo.findAll();
+     }
++
++    /**
++     * Retrieves a student by their email.
++     *
++     * @param email the email of the student to retrieve
++     * @return the Student object corresponding to the provided email
++     */
+     public Student getStudentByEmail(String email) {
+         return studentRepo.findByEmail(email);
+     }
++
++    /**
++     * Retrieves a list of students in a specific year.
++     *
++     * @param year the year of class for which students should be retrieved
++     * @return a List of Student objects that are in the specified year
++     */
+     public List<Student> getStudentsInYear(YearOfClass year) {
+         return studentRepo.findAllByYearAndActiveYear(year, true);
+     }
++
++    /**
++     * Retrieves a list of students by their last name.
++     *
++     * @param lastName the last name of the students to retrieve
++     * @return a List of Student objects that match the provided last name
++     */
+     public List<Student> getStudentsByLastName(String lastName) {
+         return studentRepo.findByLastName(lastName);
+     }
++
++    /**
++     * Retrieves a student by their registry number.
++     *
++     * @param registryNumber the registry number of the student to retrieve
++     * @return the Student object corresponding to the provided registry number
++     */
+     public Student getStudentByRegistryNumber(String registryNumber) {
+         return studentRepo.findByRegistryNumber(registryNumber);
+     }
+ }
+-
+Index: src/main/java/com/example/demoMPI/dtos/RegisterRequest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport com.example.demoMPI.Role;\r\nimport lombok.Data;\r\n\r\n@Data\r\npublic class RegisterRequest {\r\n    private String firstName;\r\n    private String lastName;\r\n    private String email;\r\n    private String phone;\r\n    private String password;\r\n    private Role role;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/RegisterRequest.java b/src/main/java/com/example/demoMPI/dtos/RegisterRequest.java
+--- a/src/main/java/com/example/demoMPI/dtos/RegisterRequest.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/RegisterRequest.java	(date 1746020998490)
+@@ -3,12 +3,40 @@
+ import com.example.demoMPI.Role;
+ import lombok.Data;
+ 
++/**
++ * Data Transfer Object for user registration request.
++ * Contains the required details to register a new user.
++ */
+ @Data
+ public class RegisterRequest {
++
++    /**
++     * The first name of the user.
++     */
+     private String firstName;
++
++    /**
++     * The last name of the user.
++     */
+     private String lastName;
++
++    /**
++     * The email address of the user.
++     */
+     private String email;
++
++    /**
++     * The phone number of the user.
++     */
+     private String phone;
++
++    /**
++     * The password for the user account.
++     */
+     private String password;
++
++    /**
++     * The role assigned to the user (e.g., STUDENT, PROFESSOR).
++     */
+     private Role role;
+ }
+Index: src/main/java/com/example/demoMPI/repos/StudentRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.repos;\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.YearOfClass;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Query;\r\n\r\nimport java.util.List;\r\n\r\npublic interface StudentRepo extends JpaRepository<Student, Long>{\r\n   // List<Student> findByFirstNameInCourse(String name, String course);//move this to course, makes more sense\r\n\r\n    Student findByEmail(String email);\r\n    Student findByRegistryNumber(String registryNumber);\r\n    List<Student> findByLastName(String lastName);\r\n    List<Student> findAllByYearAndActiveYear(YearOfClass year, boolean activeYear);\r\n\r\n    /// find all students in a certain course\r\n    //List<Student> findAllInCourse(Course course);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/repos/StudentRepo.java b/src/main/java/com/example/demoMPI/repos/StudentRepo.java
+--- a/src/main/java/com/example/demoMPI/repos/StudentRepo.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/repos/StudentRepo.java	(date 1746020998502)
+@@ -1,20 +1,47 @@
+ package com.example.demoMPI.repos;
++
+ import com.example.demoMPI.Student;
+ import com.example.demoMPI.YearOfClass;
+ import org.springframework.data.jpa.repository.JpaRepository;
+-import org.springframework.data.jpa.repository.Query;
+ 
+ import java.util.List;
+ 
+-public interface StudentRepo extends JpaRepository<Student, Long>{
+-   // List<Student> findByFirstNameInCourse(String name, String course);//move this to course, makes more sense
++/**
++ * Repository interface for {@link Student} entity.
++ * Provides methods to query student data from the database.
++ */
++public interface StudentRepo extends JpaRepository<Student, Long> {
+ 
++    /**
++     * Finds a student by their email.
++     *
++     * @param email the email of the student
++     * @return the student with the given email
++     */
+     Student findByEmail(String email);
++
++    /**
++     * Finds a student by their registry number.
++     *
++     * @param registryNumber the registry number of the student
++     * @return the student with the given registry number
++     */
+     Student findByRegistryNumber(String registryNumber);
++
++    /**
++     * Finds students by their last name.
++     *
++     * @param lastName the last name of the students
++     * @return a list of students with the given last name
++     */
+     List<Student> findByLastName(String lastName);
++
++    /**
++     * Finds students by their year and active status.
++     *
++     * @param year the year of class
++     * @param activeYear the active status of the year
++     * @return a list of students who match the given criteria
++     */
+     List<Student> findAllByYearAndActiveYear(YearOfClass year, boolean activeYear);
+-
+-    /// find all students in a certain course
+-    //List<Student> findAllInCourse(Course course);
+-
+ }
+Index: src/main/java/com/example/demoMPI/dtos/LoginRequest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport lombok.Data;\r\n\r\n@Data\r\npublic class LoginRequest {\r\n    private String email;\r\n    private String password;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/LoginRequest.java b/src/main/java/com/example/demoMPI/dtos/LoginRequest.java
+--- a/src/main/java/com/example/demoMPI/dtos/LoginRequest.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/LoginRequest.java	(date 1746020998515)
+@@ -2,8 +2,20 @@
+ 
+ import lombok.Data;
+ 
++/**
++ * Data Transfer Object for user login request.
++ * Contains the email and password for authentication.
++ */
+ @Data
+ public class LoginRequest {
++
++    /**
++     * The email address of the user attempting to log in.
++     */
+     private String email;
++
++    /**
++     * The password of the user attempting to log in.
++     */
+     private String password;
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/example/demoMPI/repos/CourseRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.repos;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.Student;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Query;\r\n\r\nimport java.util.List;\r\n\r\npublic interface CourseRepo extends JpaRepository<Course, Integer> {\r\n\r\n    @Query(\"Select g from Course g where g.id=:id\")\r\n    Course findByID(long id);\r\n\r\n    @Query(\"Select g from Grade g where g.course=:course AND g.assignee=:student\")\r\n    List<Grade> getAllGradesOfAStudent(Student student, Course course);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/repos/CourseRepo.java b/src/main/java/com/example/demoMPI/repos/CourseRepo.java
+--- a/src/main/java/com/example/demoMPI/repos/CourseRepo.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/repos/CourseRepo.java	(date 1746020998527)
+@@ -10,9 +10,22 @@
+ 
+ public interface CourseRepo extends JpaRepository<Course, Integer> {
+ 
+-    @Query("Select g from Course g where g.id=:id")
++    /**
++     * Finds a Course by its ID.
++     *
++     * @param id the ID of the Course
++     * @return the corresponding Course
++     */
++    @Query("SELECT c FROM Course c WHERE c.id = :id")
+     Course findByID(long id);
+ 
+-    @Query("Select g from Grade g where g.course=:course AND g.assignee=:student")
++    /**
++     * Retrieves all grades of a student for a specific course.
++     *
++     * @param student the student whose grades are to be retrieved
++     * @param course the course for which the grades are to be retrieved
++     * @return a list of grades for the student in the given course
++     */
++    @Query("SELECT g FROM Grade g WHERE g.course = :course AND g.assignee = :student")
+     List<Grade> getAllGradesOfAStudent(Student student, Course course);
+ }
+Index: src/main/java/com/example/demoMPI/config/SecurityConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.config;\r\n\r\nimport com.example.demoMPI.services.UserDetailsServiceImpl;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;\r\nimport org.springframework.security.config.annotation.web.builders.HttpSecurity;\r\nimport org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;\r\nimport org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport org.springframework.security.web.SecurityFilterChain;\r\n\r\n@Configuration\r\n@RequiredArgsConstructor\r\npublic class SecurityConfig {\r\n\r\n    private final UserDetailsServiceImpl userDetailsService;\r\n\r\n    @Bean\r\n    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\r\n        return http\r\n                .csrf(AbstractHttpConfigurer::disable)\r\n                .cors(cors -> {})\r\n                .authorizeHttpRequests(auth -> auth\r\n                        .requestMatchers(\r\n                                \"/api/auth/**\",          // Allow login/register\r\n                                \"/swagger-ui/**\",        // Allow Swagger UI\r\n                                \"/v3/api-docs/**\",        // Allow Swagger docs\r\n                                \"/swagger-resources/**\", // Allow Swagger resources\r\n                                \"/swagger-ui.html\",\r\n                                \"/webjars/**\"             // Webjars for Swagger\r\n                        ).permitAll()\r\n                        .requestMatchers(\"/api/v1/Professors/createProfessor\").hasRole(\"PROFESSOR\")\r\n\r\n                        .anyRequest().authenticated() // Any other requests -> must login\r\n                )\r\n                .userDetailsService(userDetailsService)\r\n                .build();\r\n    }\r\n\r\n\r\n    @Bean\r\n    public PasswordEncoder passwordEncoder() {\r\n        return new BCryptPasswordEncoder();\r\n    }\r\n\r\n    @Bean\r\n    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {\r\n        return config.getAuthenticationManager();\r\n    }\r\n}\r\n//package com.example.demoMPI.config;\r\n//\r\n//import com.example.demoMPI.services.UserDetailsServiceImpl;\r\n//import lombok.RequiredArgsConstructor;\r\n//import org.springframework.context.annotation.Bean;\r\n//import org.springframework.context.annotation.Configuration;\r\n//import org.springframework.security.authentication.AuthenticationManager;\r\n//import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;\r\n//import org.springframework.security.config.annotation.web.builders.HttpSecurity;\r\n//import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;\r\n//import org.springframework.security.config.http.SessionCreationPolicy;\r\n//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\r\n//import org.springframework.security.crypto.password.PasswordEncoder;\r\n//import org.springframework.security.web.SecurityFilterChain;\r\n//import org.springframework.web.cors.CorsConfiguration;\r\n//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;\r\n//import org.springframework.web.filter.CorsFilter;\r\n//\r\n//import java.util.Arrays;\r\n//\r\n//@Configuration\r\n//@RequiredArgsConstructor\r\n//public class SecurityConfig {\r\n//\r\n//    private final UserDetailsServiceImpl userDetailsService;\r\n//\r\n//    @Bean\r\n//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\r\n//        http\r\n//                .csrf(AbstractHttpConfigurer::disable)\r\n//                .cors(cors -> {}) // enables CORS with your CorsFilter bean\r\n//                .sessionManagement(session -> session\r\n//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))\r\n//                .authorizeHttpRequests(auth -> auth\r\n//                        .requestMatchers(\r\n//                                \"/api/auth/**\",\r\n//                                \"/swagger-ui/**\",\r\n//                                \"/v3/api-docs/**\",\r\n//                                \"/swagger-resources/**\",\r\n//                                \"/swagger-ui.html\",\r\n//                                \"/webjars/**\"\r\n//                        ).permitAll()\r\n//                        .anyRequest().authenticated()\r\n//                )\r\n//                .userDetailsService(userDetailsService);\r\n//\r\n//        return http.build();\r\n//    }\r\n//\r\n//    @Bean\r\n//    public CorsFilter corsFilter() {\r\n//        CorsConfiguration config = new CorsConfiguration();\r\n//        config.setAllowedOrigins(Arrays.asList(\r\n//                \"http://localhost:3000\",\r\n//                \"http://localhost:63342\",\r\n//                \"http://localhost:5500\"\r\n//        ));\r\n//        config.setAllowedMethods(Arrays.asList(\"GET\", \"POST\", \"PUT\", \"DELETE\", \"OPTIONS\"));\r\n//        config.setAllowedHeaders(Arrays.asList(\"*\"));\r\n//        config.setAllowCredentials(true);\r\n//\r\n//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();\r\n//        source.registerCorsConfiguration(\"/**\", config);\r\n//\r\n//        return new CorsFilter(source);\r\n//    }\r\n//\r\n//    @Bean\r\n//    public PasswordEncoder passwordEncoder() {\r\n//        return new BCryptPasswordEncoder();\r\n//    }\r\n//\r\n//    @Bean\r\n//    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {\r\n//        return config.getAuthenticationManager();\r\n//    }\r\n//}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/config/SecurityConfig.java b/src/main/java/com/example/demoMPI/config/SecurityConfig.java
+--- a/src/main/java/com/example/demoMPI/config/SecurityConfig.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/config/SecurityConfig.java	(date 1746020998537)
+@@ -12,12 +12,22 @@
+ import org.springframework.security.crypto.password.PasswordEncoder;
+ import org.springframework.security.web.SecurityFilterChain;
+ 
++/**
++ * Configures Spring Security settings for the application.
++ */
+ @Configuration
+ @RequiredArgsConstructor
+ public class SecurityConfig {
+ 
+     private final UserDetailsServiceImpl userDetailsService;
+ 
++    /**
++     * Defines the security filter chain for handling HTTP requests and security rules.
++     *
++     * @param http the {@link HttpSecurity} instance to configure
++     * @return the configured {@link SecurityFilterChain}
++     * @throws Exception if an error occurs during configuration
++     */
+     @Bean
+     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+         return http
+@@ -25,106 +35,39 @@
+                 .cors(cors -> {})
+                 .authorizeHttpRequests(auth -> auth
+                         .requestMatchers(
+-                                "/api/auth/**",          // Allow login/register
+-                                "/swagger-ui/**",        // Allow Swagger UI
+-                                "/v3/api-docs/**",        // Allow Swagger docs
+-                                "/swagger-resources/**", // Allow Swagger resources
++                                "/api/auth/**",
++                                "/swagger-ui/**",
++                                "/v3/api-docs/**",
++                                "/swagger-resources/**",
+                                 "/swagger-ui.html",
+-                                "/webjars/**"             // Webjars for Swagger
++                                "/webjars/**"
+                         ).permitAll()
+                         .requestMatchers("/api/v1/Professors/createProfessor").hasRole("PROFESSOR")
+-
+-                        .anyRequest().authenticated() // Any other requests -> must login
++                        .anyRequest().authenticated()
+                 )
+                 .userDetailsService(userDetailsService)
+                 .build();
+     }
+ 
+-
++    /**
++     * Provides a password encoder using BCrypt.
++     *
++     * @return the {@link PasswordEncoder} bean
++     */
+     @Bean
+     public PasswordEncoder passwordEncoder() {
+         return new BCryptPasswordEncoder();
+     }
+ 
++    /**
++     * Provides an {@link AuthenticationManager} bean.
++     *
++     * @param config the {@link AuthenticationConfiguration}
++     * @return the {@link AuthenticationManager}
++     * @throws Exception if an error occurs when retrieving the manager
++     */
+     @Bean
+     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+         return config.getAuthenticationManager();
+     }
+ }
+-//package com.example.demoMPI.config;
+-//
+-//import com.example.demoMPI.services.UserDetailsServiceImpl;
+-//import lombok.RequiredArgsConstructor;
+-//import org.springframework.context.annotation.Bean;
+-//import org.springframework.context.annotation.Configuration;
+-//import org.springframework.security.authentication.AuthenticationManager;
+-//import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+-//import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+-//import org.springframework.security.config.http.SessionCreationPolicy;
+-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+-//import org.springframework.security.crypto.password.PasswordEncoder;
+-//import org.springframework.security.web.SecurityFilterChain;
+-//import org.springframework.web.cors.CorsConfiguration;
+-//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+-//import org.springframework.web.filter.CorsFilter;
+-//
+-//import java.util.Arrays;
+-//
+-//@Configuration
+-//@RequiredArgsConstructor
+-//public class SecurityConfig {
+-//
+-//    private final UserDetailsServiceImpl userDetailsService;
+-//
+-//    @Bean
+-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+-//        http
+-//                .csrf(AbstractHttpConfigurer::disable)
+-//                .cors(cors -> {}) // enables CORS with your CorsFilter bean
+-//                .sessionManagement(session -> session
+-//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+-//                .authorizeHttpRequests(auth -> auth
+-//                        .requestMatchers(
+-//                                "/api/auth/**",
+-//                                "/swagger-ui/**",
+-//                                "/v3/api-docs/**",
+-//                                "/swagger-resources/**",
+-//                                "/swagger-ui.html",
+-//                                "/webjars/**"
+-//                        ).permitAll()
+-//                        .anyRequest().authenticated()
+-//                )
+-//                .userDetailsService(userDetailsService);
+-//
+-//        return http.build();
+-//    }
+-//
+-//    @Bean
+-//    public CorsFilter corsFilter() {
+-//        CorsConfiguration config = new CorsConfiguration();
+-//        config.setAllowedOrigins(Arrays.asList(
+-//                "http://localhost:3000",
+-//                "http://localhost:63342",
+-//                "http://localhost:5500"
+-//        ));
+-//        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+-//        config.setAllowedHeaders(Arrays.asList("*"));
+-//        config.setAllowCredentials(true);
+-//
+-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+-//        source.registerCorsConfiguration("/**", config);
+-//
+-//        return new CorsFilter(source);
+-//    }
+-//
+-//    @Bean
+-//    public PasswordEncoder passwordEncoder() {
+-//        return new BCryptPasswordEncoder();
+-//    }
+-//
+-//    @Bean
+-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+-//        return config.getAuthenticationManager();
+-//    }
+-//}
+Index: src/main/java/com/example/demoMPI/dtos/UserDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport lombok.Data;\r\n\r\n@Data\r\npublic class UserDTO {\r\n    private String firstName;\r\n    private String lastName;\r\n    private String email;\r\n    private String phone;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/UserDTO.java b/src/main/java/com/example/demoMPI/dtos/UserDTO.java
+--- a/src/main/java/com/example/demoMPI/dtos/UserDTO.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/UserDTO.java	(date 1746020998547)
+@@ -2,10 +2,30 @@
+ 
+ import lombok.Data;
+ 
++/**
++ * Data Transfer Object for User entity.
++ * Contains the basic personal information of a user.
++ */
+ @Data
+ public class UserDTO {
++
++    /**
++     * The first name of the user.
++     */
+     private String firstName;
++
++    /**
++     * The last name of the user.
++     */
+     private String lastName;
++
++    /**
++     * The email address of the user.
++     */
+     private String email;
++
++    /**
++     * The phone number of the user.
++     */
+     private String phone;
+ }
+Index: src/main/java/com/example/demoMPI/controllers/AuthController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.controllers;\r\n\r\nimport com.example.demoMPI.User;\r\nimport com.example.demoMPI.repos.UserRepo;\r\nimport com.example.demoMPI.dtos.RegisterRequest;\r\nimport com.example.demoMPI.dtos.LoginRequest;\r\nimport com.example.demoMPI.services.JwtService;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.authentication.UsernamePasswordAuthenticationToken;\r\nimport org.springframework.security.core.Authentication;\r\nimport org.springframework.security.core.context.SecurityContextHolder;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport org.springframework.web.bind.annotation.*;\r\nimport org.springframework.http.ResponseEntity;\r\n\r\nimport java.util.Map;\r\n\r\n@RestController\r\n@RequestMapping(\"/api/auth\")\r\n@RequiredArgsConstructor\r\n\r\npublic class AuthController {\r\n\r\n    private final UserRepo userRepo;\r\n    private final PasswordEncoder passwordEncoder;\r\n    private final AuthenticationManager authenticationManager;\r\n    private final JwtService jwtService;\r\n\r\n\r\n    @PostMapping(\"/register\")\r\n    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {\r\n        if (userRepo.findByEmail(request.getEmail()).isPresent()) {\r\n            return ResponseEntity.badRequest().body(\"Email already in use!\");\r\n        }\r\n\r\n        User user = User.builder()\r\n                .firstName(request.getFirstName())\r\n                .lastName(request.getLastName())\r\n                .email(request.getEmail())\r\n                .password(passwordEncoder.encode(request.getPassword()))\r\n                .phone(request.getPhone())\r\n                .role(request.getRole())\r\n                .build();\r\n\r\n        userRepo.save(user);\r\n        return ResponseEntity.ok(\"User registered successfully!\");\r\n    }\r\n\r\n    @PostMapping(\"/login\")\r\n    public Map<String, String> login(@RequestBody LoginRequest request) {\r\n        Authentication authentication = authenticationManager.authenticate(\r\n                new UsernamePasswordAuthenticationToken(\r\n                        request.getEmail(),\r\n                        request.getPassword()\r\n                )\r\n        );\r\n\r\n        SecurityContextHolder.getContext().setAuthentication(authentication);\r\n\r\n        User user = userRepo.findByEmail(request.getEmail()).orElseThrow();\r\n\r\n//        return jwtService.generateToken(request.getEmail());\r\n       // String token = jwtService.generateToken(request.getEmail());\r\n        String token = jwtService.generateToken(user.getEmail(), user.getRole().name()); // \uD83D\uDC48 FIXED LINE\r\n        return Map.of(\r\n                \"token\", token,\r\n                \"role\", user.getRole().name());\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/controllers/AuthController.java b/src/main/java/com/example/demoMPI/controllers/AuthController.java
+--- a/src/main/java/com/example/demoMPI/controllers/AuthController.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/controllers/AuthController.java	(date 1746020998557)
+@@ -1,10 +1,14 @@
+ package com.example.demoMPI.controllers;
+ 
+ import com.example.demoMPI.User;
++import com.example.demoMPI.dtos.ProfessorDTO;
++import com.example.demoMPI.dtos.StudentDTO;
+ import com.example.demoMPI.repos.UserRepo;
+ import com.example.demoMPI.dtos.RegisterRequest;
+ import com.example.demoMPI.dtos.LoginRequest;
+ import com.example.demoMPI.services.JwtService;
++import com.example.demoMPI.services.ProfessorService;
++import com.example.demoMPI.services.StudentService;
+ import lombok.RequiredArgsConstructor;
+ import org.springframework.security.authentication.AuthenticationManager;
+ import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+@@ -16,18 +20,28 @@
+ 
+ import java.util.Map;
+ 
++/**
++ * Handles user authentication and registration operations.
++ */
+ @RestController
+ @RequestMapping("/api/auth")
+ @RequiredArgsConstructor
+-
+ public class AuthController {
+ 
+     private final UserRepo userRepo;
+     private final PasswordEncoder passwordEncoder;
+     private final AuthenticationManager authenticationManager;
+     private final JwtService jwtService;
++    private final StudentService studentService;
++    private final ProfessorService professorService;
+ 
+-
++    /**
++     * Registers a new user (Student or Professor) and saves them to the database.
++     * Also inserts role-specific details into the appropriate table.
++     *
++     * @param request the registration request payload
++     * @return a response indicating success or failure
++     */
+     @PostMapping("/register")
+     public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+         if (userRepo.findByEmail(request.getEmail()).isPresent()) {
+@@ -44,9 +58,32 @@
+                 .build();
+ 
+         userRepo.save(user);
++
++        if (user.getRole().name().equals("STUDENT")) {
++            StudentDTO studentDTO = new StudentDTO();
++            studentDTO.setEmail(user.getEmail());
++            studentDTO.setFirstName(user.getFirstName());
++            studentDTO.setLastName(user.getLastName());
++            studentDTO.setPhone(user.getPhone());
++            studentService.createStudent(studentDTO);
++        } else if (user.getRole().name().equals("PROFESSOR")) {
++            ProfessorDTO professorDTO = new ProfessorDTO();
++            professorDTO.setEmail(user.getEmail());
++            professorDTO.setFirstName(user.getFirstName());
++            professorDTO.setLastName(user.getLastName());
++            professorDTO.setPhone(user.getPhone());
++            professorService.createProfessor(professorDTO);
++        }
++
+         return ResponseEntity.ok("User registered successfully!");
+     }
+ 
++    /**
++     * Authenticates a user and returns a JWT token along with their role.
++     *
++     * @param request the login credentials
++     * @return a map containing the JWT token and user role
++     */
+     @PostMapping("/login")
+     public Map<String, String> login(@RequestBody LoginRequest request) {
+         Authentication authentication = authenticationManager.authenticate(
+@@ -60,12 +97,11 @@
+ 
+         User user = userRepo.findByEmail(request.getEmail()).orElseThrow();
+ 
+-//        return jwtService.generateToken(request.getEmail());
+-       // String token = jwtService.generateToken(request.getEmail());
+-        String token = jwtService.generateToken(user.getEmail(), user.getRole().name()); // 👈 FIXED LINE
++        String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
++
+         return Map.of(
+                 "token", token,
+-                "role", user.getRole().name());
++                "role", user.getRole().name()
++        );
+     }
+-
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/example/demoMPI/repos/ProfessorRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.repos;\r\n\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.Student;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Query;\r\nimport org.springframework.data.repository.query.Param;\r\n\r\nimport java.util.List;\r\n\r\npublic interface ProfessorRepo  extends JpaRepository<Professor, Long> {\r\n    @Query(\"select p from Professor p where p.id=:id\")\r\n    Professor findByID(long id);\r\n\r\n    @Query(\"select s from Professor s\")\r\n    List<Professor> getAllProfessors();\r\n    \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/repos/ProfessorRepo.java b/src/main/java/com/example/demoMPI/repos/ProfessorRepo.java
+--- a/src/main/java/com/example/demoMPI/repos/ProfessorRepo.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/repos/ProfessorRepo.java	(date 1746020998566)
+@@ -1,18 +1,27 @@
+ package com.example.demoMPI.repos;
+ 
+ import com.example.demoMPI.Professor;
+-import com.example.demoMPI.Student;
+ import org.springframework.data.jpa.repository.JpaRepository;
+ import org.springframework.data.jpa.repository.Query;
+-import org.springframework.data.repository.query.Param;
+ 
+ import java.util.List;
+ 
+-public interface ProfessorRepo  extends JpaRepository<Professor, Long> {
+-    @Query("select p from Professor p where p.id=:id")
++public interface ProfessorRepo extends JpaRepository<Professor, Long> {
++
++    /**
++     * Finds a professor by their ID.
++     *
++     * @param id the ID of the professor
++     * @return the professor with the given ID
++     */
++    @Query("select p from Professor p where p.id = :id")
+     Professor findByID(long id);
+ 
+-    @Query("select s from Professor s")
++    /**
++     * Retrieves all professors.
++     *
++     * @return a list of all professors
++     */
++    @Query("select p from Professor p")
+     List<Professor> getAllProfessors();
+-    
+ }
+Index: src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport com.example.demoMPI.dtos.CourseDTO;\r\nimport org.springframework.stereotype.Component;\r\n\r\n@Component\r\npublic class CourseMapperImpl implements CourseMapper {\r\n    @Override\r\n    public Course toCourse(CourseDTO courseDTO) {\r\n       if(courseDTO == null)\r\n           throw new IllegalArgumentException(\"Course DTO cannot be null\");\r\n       Course course = new Course();\r\n       course.setName(courseDTO.getName());\r\n       course.setProfessors(courseDTO.getProfessors());\r\n       course.setStudents(courseDTO.getStudents());\r\n       return course;\r\n    }\r\n\r\n    @Override\r\n    public CourseDTO toCourseDTO(Course course) {\r\n        if(course == null)\r\n            throw new IllegalArgumentException(\"Course cannot be null\");\r\n        CourseDTO courseDTO = new CourseDTO();\r\n        courseDTO.setName(course.getName());\r\n        courseDTO.setProfessors(course.getProfessors());\r\n        courseDTO.setStudents(course.getStudents());\r\n        return courseDTO;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java b/src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java
+--- a/src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java	(date 1746020998575)
+@@ -4,23 +4,44 @@
+ import com.example.demoMPI.dtos.CourseDTO;
+ import org.springframework.stereotype.Component;
+ 
++/**
++ * Implementation of the CourseMapper interface.
++ * Converts between Course entity and CourseDTO.
++ */
+ @Component
+ public class CourseMapperImpl implements CourseMapper {
++
++    /**
++     * Converts a CourseDTO to a Course entity.
++     *
++     * @param courseDTO the CourseDTO to convert
++     * @return the corresponding Course entity
++     * @throws IllegalArgumentException if the provided CourseDTO is null
++     */
+     @Override
+     public Course toCourse(CourseDTO courseDTO) {
+-       if(courseDTO == null)
+-           throw new IllegalArgumentException("Course DTO cannot be null");
+-       Course course = new Course();
+-       course.setName(courseDTO.getName());
+-       course.setProfessors(courseDTO.getProfessors());
+-       course.setStudents(courseDTO.getStudents());
+-       return course;
++        if (courseDTO == null)
++            throw new IllegalArgumentException("Course DTO cannot be null");
++
++        Course course = new Course();
++        course.setName(courseDTO.getName());
++        course.setProfessors(courseDTO.getProfessors());
++        course.setStudents(courseDTO.getStudents());
++        return course;
+     }
+ 
++    /**
++     * Converts a Course entity to a CourseDTO.
++     *
++     * @param course the Course entity to convert
++     * @return the corresponding CourseDTO
++     * @throws IllegalArgumentException if the provided Course is null
++     */
+     @Override
+     public CourseDTO toCourseDTO(Course course) {
+-        if(course == null)
++        if (course == null)
+             throw new IllegalArgumentException("Course cannot be null");
++
+         CourseDTO courseDTO = new CourseDTO();
+         courseDTO.setName(course.getName());
+         courseDTO.setProfessors(course.getProfessors());
+Index: src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.dtos.StudentDTO;\r\nimport org.springframework.stereotype.Component;\r\n\r\n@Component\r\npublic class StudentMapperImpl implements StudentMapper {\r\n    @Override\r\n    public Student toStudent(StudentDTO studentDTO) {\r\n        if (studentDTO == null) {\r\n            throw new IllegalArgumentException(\"StudentDTO cannot be null\");\r\n        }\r\n        Student student = new Student();\r\n        student.setRegistryNumber(studentDTO.getRegistryNumber());\r\n        student.setActiveYear(studentDTO.isActiveYear());\r\n        student.setYear(studentDTO.getYear());\r\n        return student;\r\n    }\r\n\r\n    @Override\r\n    public StudentDTO toStudentDTO(Student student) {\r\n        if (student == null) {\r\n            throw new IllegalArgumentException(\"Student cannot be null\");\r\n        }\r\n        StudentDTO studentDTO = new StudentDTO();\r\n        studentDTO.setRegistryNumber(student.getRegistryNumber());\r\n        studentDTO.setActiveYear(student.isActiveYear());\r\n        studentDTO.setYear(student.getYear());\r\n        return studentDTO;\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java b/src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java
+--- a/src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java	(date 1746020998584)
+@@ -4,8 +4,19 @@
+ import com.example.demoMPI.dtos.StudentDTO;
+ import org.springframework.stereotype.Component;
+ 
++/**
++ * Implementation of the StudentMapper interface to convert between Student entity and StudentDTO.
++ */
+ @Component
+ public class StudentMapperImpl implements StudentMapper {
++
++    /**
++     * Converts a StudentDTO to a Student entity.
++     *
++     * @param studentDTO the StudentDTO to convert
++     * @return the corresponding Student entity
++     * @throws IllegalArgumentException if studentDTO is null
++     */
+     @Override
+     public Student toStudent(StudentDTO studentDTO) {
+         if (studentDTO == null) {
+@@ -18,6 +29,13 @@
+         return student;
+     }
+ 
++    /**
++     * Converts a Student entity to a StudentDTO.
++     *
++     * @param student the Student entity to convert
++     * @return the corresponding StudentDTO
++     * @throws IllegalArgumentException if student is null
++     */
+     @Override
+     public StudentDTO toStudentDTO(Student student) {
+         if (student == null) {
+@@ -30,4 +48,3 @@
+         return studentDTO;
+     }
+ }
+-
+Index: src/main/java/com/example/demoMPI/repos/GradeRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.repos;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.Student;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Query;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\npublic interface GradeRepo extends JpaRepository<Grade, Long> {\r\n    List<Grade> findByAssignee(Student student);\r\n    List<Grade> findByAssigner(Professor professor);\r\n    List<Grade> findByDate(Date date);\r\n    List<Grade> findByCourse(Course course);\r\n\r\n    @Query(\"select g from Grade g where g.id=:id\")\r\n    Grade findByID(long id);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/repos/GradeRepo.java b/src/main/java/com/example/demoMPI/repos/GradeRepo.java
+--- a/src/main/java/com/example/demoMPI/repos/GradeRepo.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/repos/GradeRepo.java	(date 1746020998593)
+@@ -11,11 +11,45 @@
+ import java.util.List;
+ 
+ public interface GradeRepo extends JpaRepository<Grade, Long> {
++
++    /**
++     * Finds all grades assigned to a specific student.
++     *
++     * @param student the student whose grades are to be retrieved
++     * @return a list of grades for the student
++     */
+     List<Grade> findByAssignee(Student student);
++
++    /**
++     * Finds all grades assigned by a specific professor.
++     *
++     * @param professor the professor whose assigned grades are to be retrieved
++     * @return a list of grades assigned by the professor
++     */
+     List<Grade> findByAssigner(Professor professor);
++
++    /**
++     * Finds all grades assigned on a specific date.
++     *
++     * @param date the date the grades were assigned
++     * @return a list of grades assigned on the specified date
++     */
+     List<Grade> findByDate(Date date);
++
++    /**
++     * Finds all grades for a specific course.
++     *
++     * @param course the course for which the grades are to be retrieved
++     * @return a list of grades for the course
++     */
+     List<Grade> findByCourse(Course course);
+ 
+-    @Query("select g from Grade g where g.id=:id")
++    /**
++     * Finds a grade by its ID.
++     *
++     * @param id the ID of the grade
++     * @return the corresponding grade
++     */
++    @Query("select g from Grade g where g.id = :id")
+     Grade findByID(long id);
+ }
+Index: src/main/java/com/example/demoMPI/mappers/GradeMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.mappers;\r\n\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.dtos.GradeDTO;\r\n\r\n\r\npublic interface GradeMapper {\r\n     Grade toGrade(GradeDTO gradeDTO);\r\n     GradeDTO toGradeDTO(Grade grade);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/mappers/GradeMapper.java b/src/main/java/com/example/demoMPI/mappers/GradeMapper.java
+--- a/src/main/java/com/example/demoMPI/mappers/GradeMapper.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/mappers/GradeMapper.java	(date 1746020998602)
+@@ -3,8 +3,25 @@
+ import com.example.demoMPI.Grade;
+ import com.example.demoMPI.dtos.GradeDTO;
+ 
+-
++/**
++ * Interface for mapping between Grade and GradeDTO.
++ * Provides methods to convert between entity and DTO representations of a grade.
++ */
+ public interface GradeMapper {
++
++     /**
++      * Converts a GradeDTO to a Grade entity.
++      *
++      * @param gradeDTO the GradeDTO to convert
++      * @return the corresponding Grade entity
++      */
+      Grade toGrade(GradeDTO gradeDTO);
++
++     /**
++      * Converts a Grade entity to a GradeDTO.
++      *
++      * @param grade the Grade entity to convert
++      * @return the corresponding GradeDTO
++      */
+      GradeDTO toGradeDTO(Grade grade);
+ }
+Index: src/main/java/com/example/demoMPI/controllers/StudentController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.controllers;\r\n\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.YearOfClass;\r\nimport com.example.demoMPI.dtos.StudentDTO;\r\nimport com.example.demoMPI.services.StudentService;\r\nimport io.swagger.v3.oas.annotations.*;\r\nimport io.swagger.v3.oas.annotations.tags.Tag;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.web.bind.annotation.*;\r\nimport java.util.List;\r\n\r\n@RestController\r\n@RequestMapping(\"/api/v1/Students\")\r\n@RequiredArgsConstructor\r\n@Tag(name=\"Students\",description=\"Shows all the things you can do with students\")\r\npublic class StudentController {\r\n    private final StudentService studentService;\r\n\r\n    @Operation(summary = \"Create Student\")\r\n    @PostMapping(\"/createStudent\")\r\n    public void createStudent(@RequestBody StudentDTO studentdto) {\r\n        studentService.createStudent(studentdto);\r\n    }\r\n\r\n    @Operation(summary = \"Get All Students\")\r\n    @GetMapping(\"/allStudents\")\r\n    public List<Student> getAllStudents(){\r\n        return studentService.listStudents();\r\n    }\r\n\r\n    @Operation(summary = \"Search student by email\")\r\n    @GetMapping(\"/studentByEmail\")\r\n    public Student getStudentByEmail(@RequestParam String email){\r\n        return studentService.getStudentByEmail(email);\r\n    }\r\n\r\n    @Operation(summary = \"Search student by year\")\r\n    @GetMapping(\"/studentInYear\")\r\n    public List<Student> getStudentsInYear(@RequestParam YearOfClass year){\r\n        return studentService.getStudentsInYear(year);\r\n    }\r\n\r\n    @Operation(summary = \"Search student by last name\")\r\n    @GetMapping(\"/studentByLastName\")\r\n    public List<Student> getStudentsByLastname(@RequestParam String lastname){\r\n        return studentService.getStudentsByLastName(lastname);\r\n    }\r\n\r\n    @Operation(summary = \"Search student by registry number\")\r\n    @GetMapping(\"/studentByRegistryNumber\")\r\n    public Student getStudentByRegistryNumber(@RequestParam String registryNumber){\r\n        return studentService.getStudentByRegistryNumber(registryNumber);\r\n    }\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/controllers/StudentController.java b/src/main/java/com/example/demoMPI/controllers/StudentController.java
+--- a/src/main/java/com/example/demoMPI/controllers/StudentController.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/controllers/StudentController.java	(date 1746020998611)
+@@ -10,49 +10,84 @@
+ import org.springframework.web.bind.annotation.*;
+ import java.util.List;
+ 
++/**
++ * Controller for managing student-related operations.
++ */
+ @RestController
+ @RequestMapping("/api/v1/Students")
+ @RequiredArgsConstructor
+-@Tag(name="Students",description="Shows all the things you can do with students")
++@Tag(name = "Students", description = "Shows all the things you can do with students")
+ public class StudentController {
++
+     private final StudentService studentService;
+ 
++    /**
++     * Creates a new student entry.
++     *
++     * @param studentdto the student data transfer object
++     */
+     @Operation(summary = "Create Student")
+     @PostMapping("/createStudent")
+     public void createStudent(@RequestBody StudentDTO studentdto) {
+         studentService.createStudent(studentdto);
+     }
+ 
++    /**
++     * Retrieves a list of all students.
++     *
++     * @return list of students
++     */
+     @Operation(summary = "Get All Students")
+     @GetMapping("/allStudents")
+-    public List<Student> getAllStudents(){
++    public List<Student> getAllStudents() {
+         return studentService.listStudents();
+     }
+ 
++    /**
++     * Retrieves a student by their email.
++     *
++     * @param email the student's email address
++     * @return the matching student
++     */
+     @Operation(summary = "Search student by email")
+     @GetMapping("/studentByEmail")
+-    public Student getStudentByEmail(@RequestParam String email){
++    public Student getStudentByEmail(@RequestParam String email) {
+         return studentService.getStudentByEmail(email);
+     }
+ 
++    /**
++     * Retrieves a list of students in a specific year of class.
++     *
++     * @param year the year of class
++     * @return list of students in the given year
++     */
+     @Operation(summary = "Search student by year")
+     @GetMapping("/studentInYear")
+-    public List<Student> getStudentsInYear(@RequestParam YearOfClass year){
++    public List<Student> getStudentsInYear(@RequestParam YearOfClass year) {
+         return studentService.getStudentsInYear(year);
+     }
+ 
++    /**
++     * Retrieves students by their last name.
++     *
++     * @param lastname the student's last name
++     * @return list of students with the given last name
++     */
+     @Operation(summary = "Search student by last name")
+     @GetMapping("/studentByLastName")
+-    public List<Student> getStudentsByLastname(@RequestParam String lastname){
++    public List<Student> getStudentsByLastname(@RequestParam String lastname) {
+         return studentService.getStudentsByLastName(lastname);
+     }
+ 
++    /**
++     * Retrieves a student by their registry number.
++     *
++     * @param registryNumber the student's registry number
++     * @return the matching student
++     */
+     @Operation(summary = "Search student by registry number")
+     @GetMapping("/studentByRegistryNumber")
+-    public Student getStudentByRegistryNumber(@RequestParam String registryNumber){
++    public Student getStudentByRegistryNumber(@RequestParam String registryNumber) {
+         return studentService.getStudentByRegistryNumber(registryNumber);
+     }
+-
+-
+-
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/example/demoMPI/controllers/GradeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.controllers;\r\n\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.dtos.GradeDTO;\r\nimport com.example.demoMPI.services.GradeService;\r\nimport com.example.demoMPI.services.ProfessorService;\r\nimport com.example.demoMPI.services.StudentService;\r\nimport io.swagger.v3.oas.annotations.Operation;\r\nimport io.swagger.v3.oas.annotations.tags.Tag;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.security.access.prepost.PreAuthorize;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n@RestController\r\n@RequestMapping(\"/api/v1/Grades\")\r\n@RequiredArgsConstructor\r\n@Tag(name=\"Grades\",description=\"Just Grades\")\r\npublic class GradeController {\r\n    private final GradeService gradeService;\r\n    private final StudentService studentService;\r\n    private final ProfessorService professorService;\r\n\r\n    @PreAuthorize(\"hasRole('PROFESSOR')\")\r\n    @Operation(summary = \"Create a grade\")\r\n    @PostMapping(\"/createGrade\")\r\n    public void createGrade(@RequestParam String registryNumber, @RequestParam long professorID, @RequestParam Date date, @RequestParam double grade) {\r\n        GradeDTO gradeDTO=new GradeDTO();\r\n        gradeDTO.setAssignee(studentService.getStudentByRegistryNumber(registryNumber));\r\n        gradeDTO.setAssigner(professorService.getProfessor(professorID));\r\n        gradeDTO.setDate(date);\r\n        gradeDTO.setGrade(grade);\r\n        //add course id to request parameters later\r\n        gradeService.createGrade(gradeDTO);\r\n    }\r\n\r\n    @PreAuthorize(\"hasRole('PROFESSOR')\")\r\n    @Operation(summary = \"Erase a grade\")\r\n    @PostMapping(\"/deleteGrade\")\r\n    public void deleteGrade(@RequestParam Long gradeID) {\r\n        Grade grade=gradeService.findGradeById(gradeID);\r\n        gradeService.deleteGrade(grade);\r\n    }\r\n\r\n    @PreAuthorize(\"hasRole('PROFESSOR')\")\r\n    @Operation(summary = \"Update grade\")\r\n    @PostMapping(\"/updateGrade\")\r\n    public void updateGrade(@RequestParam double newGrade,@RequestParam long gradeId){\r\n        Grade grade=gradeService.findGradeById(gradeId);\r\n        gradeService.updateGrade(grade,newGrade);\r\n    }\r\n\r\n    @PreAuthorize(\"hasRole('STUDENT')\")\r\n    @Operation(summary=\"Get a student's grades\")\r\n    @GetMapping(\"/getGrades\")\r\n    public List<Grade> getAllOfAStudentsGrades(@RequestParam String registryNumber){\r\n        Student student=studentService.getStudentByRegistryNumber(registryNumber);\r\n        return gradeService.getGradeRepo().findByAssignee(student);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/controllers/GradeController.java b/src/main/java/com/example/demoMPI/controllers/GradeController.java
+--- a/src/main/java/com/example/demoMPI/controllers/GradeController.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/controllers/GradeController.java	(date 1746020998621)
+@@ -16,50 +16,81 @@
+ import java.util.Date;
+ import java.util.List;
+ 
++/**
++ * Controller for managing grade-related actions.
++ */
+ @RestController
+ @RequestMapping("/api/v1/Grades")
+ @RequiredArgsConstructor
+-@Tag(name="Grades",description="Just Grades")
++@Tag(name = "Grades", description = "Just Grades")
+ public class GradeController {
++
+     private final GradeService gradeService;
+     private final StudentService studentService;
+     private final ProfessorService professorService;
+ 
++    /**
++     * Creates a new grade for a student assigned by a professor.
++     *
++     * @param registryNumber the registry number of the student
++     * @param professorID    the ID of the professor assigning the grade
++     * @param date           the date the grade was assigned
++     * @param grade          the grade value
++     */
+     @PreAuthorize("hasRole('PROFESSOR')")
+     @Operation(summary = "Create a grade")
+     @PostMapping("/createGrade")
+-    public void createGrade(@RequestParam String registryNumber, @RequestParam long professorID, @RequestParam Date date, @RequestParam double grade) {
+-        GradeDTO gradeDTO=new GradeDTO();
++    public void createGrade(@RequestParam String registryNumber,
++                            @RequestParam long professorID,
++                            @RequestParam Date date,
++                            @RequestParam double grade) {
++        GradeDTO gradeDTO = new GradeDTO();
+         gradeDTO.setAssignee(studentService.getStudentByRegistryNumber(registryNumber));
+         gradeDTO.setAssigner(professorService.getProfessor(professorID));
+         gradeDTO.setDate(date);
+         gradeDTO.setGrade(grade);
+-        //add course id to request parameters later
++        // TODO: add course ID to request parameters if needed
+         gradeService.createGrade(gradeDTO);
+     }
+ 
++    /**
++     * Deletes a grade based on its ID.
++     *
++     * @param gradeID the ID of the grade to delete
++     */
+     @PreAuthorize("hasRole('PROFESSOR')")
+     @Operation(summary = "Erase a grade")
+     @PostMapping("/deleteGrade")
+     public void deleteGrade(@RequestParam Long gradeID) {
+-        Grade grade=gradeService.findGradeById(gradeID);
++        Grade grade = gradeService.findGradeById(gradeID);
+         gradeService.deleteGrade(grade);
+     }
+ 
++    /**
++     * Updates the value of a grade.
++     *
++     * @param newGrade the new grade value
++     * @param gradeId  the ID of the grade to update
++     */
+     @PreAuthorize("hasRole('PROFESSOR')")
+     @Operation(summary = "Update grade")
+     @PostMapping("/updateGrade")
+-    public void updateGrade(@RequestParam double newGrade,@RequestParam long gradeId){
+-        Grade grade=gradeService.findGradeById(gradeId);
+-        gradeService.updateGrade(grade,newGrade);
++    public void updateGrade(@RequestParam double newGrade, @RequestParam long gradeId) {
++        Grade grade = gradeService.findGradeById(gradeId);
++        gradeService.updateGrade(grade, newGrade);
+     }
+ 
++    /**
++     * Retrieves all grades for a specific student.
++     *
++     * @param registryNumber the student's registry number
++     * @return a list of grades for the student
++     */
+     @PreAuthorize("hasRole('STUDENT')")
+-    @Operation(summary="Get a student's grades")
++    @Operation(summary = "Get a student's grades")
+     @GetMapping("/getGrades")
+-    public List<Grade> getAllOfAStudentsGrades(@RequestParam String registryNumber){
+-        Student student=studentService.getStudentByRegistryNumber(registryNumber);
++    public List<Grade> getAllOfAStudentsGrades(@RequestParam String registryNumber) {
++        Student student = studentService.getStudentByRegistryNumber(registryNumber);
+         return gradeService.getGradeRepo().findByAssignee(student);
+     }
+-
+ }
+Index: src/main/java/com/example/demoMPI/services/CourseService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.services;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport com.example.demoMPI.Grade;\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.dtos.CourseDTO;\r\nimport com.example.demoMPI.mappers.CourseMapper;\r\nimport com.example.demoMPI.repos.CourseRepo;\r\nimport jakarta.transaction.Transactional;\r\nimport lombok.Getter;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.Setter;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\n@Transactional\r\n@RequiredArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class CourseService {\r\n    private final CourseMapper courseMapper;\r\n    private final CourseRepo courseRepo;\r\n    private final StudentService studentService;\r\n    public Course createCourse(CourseDTO courseDTO) {\r\n        Course course = courseMapper.toCourse(courseDTO);\r\n        return courseRepo.save(course);\r\n    }\r\n\r\n    public List<Course> getAllCourses() {\r\n        return courseRepo.findAll();\r\n    }\r\n\r\n    public double calculateAverage(long courseID, String registryNumber) {\r\n        Student student=studentService.getStudentByRegistryNumber(registryNumber);\r\n        Course course=courseRepo.findByID(courseID);\r\n        List<Grade> gradeOfStudent=courseRepo.getAllGradesOfAStudent(student,course);\r\n        double sum=0;\r\n        double number=0;\r\n        for (Grade grade:gradeOfStudent) {\r\n            sum+=grade.getGrade();\r\n            number++;\r\n        }\r\n        return sum/number;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/services/CourseService.java b/src/main/java/com/example/demoMPI/services/CourseService.java
+--- a/src/main/java/com/example/demoMPI/services/CourseService.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/services/CourseService.java	(date 1746020998631)
+@@ -14,35 +14,58 @@
+ 
+ import java.util.List;
+ 
++/**
++ * Service class for managing courses.
++ * Provides methods to create courses, retrieve all courses, and calculate averages.
++ */
+ @Service
+ @Transactional
+ @RequiredArgsConstructor
+ @Getter
+ @Setter
+ public class CourseService {
++
+     private final CourseMapper courseMapper;
+     private final CourseRepo courseRepo;
+     private final StudentService studentService;
++
++    /**
++     * Creates a new course based on the provided {@link CourseDTO}.
++     *
++     * @param courseDTO the data transfer object containing course information
++     * @return the created {@link Course}
++     */
+     public Course createCourse(CourseDTO courseDTO) {
+         Course course = courseMapper.toCourse(courseDTO);
+         return courseRepo.save(course);
+     }
+ 
++    /**
++     * Retrieves all courses available in the repository.
++     *
++     * @return a list of all {@link Course}s
++     */
+     public List<Course> getAllCourses() {
+         return courseRepo.findAll();
+     }
+ 
++    /**
++     * Calculates the average grade of a student in a specific course.
++     *
++     * @param courseID the ID of the course
++     * @param registryNumber the registry number of the student
++     * @return the average grade of the student in the course
++     */
+     public double calculateAverage(long courseID, String registryNumber) {
+-        Student student=studentService.getStudentByRegistryNumber(registryNumber);
+-        Course course=courseRepo.findByID(courseID);
+-        List<Grade> gradeOfStudent=courseRepo.getAllGradesOfAStudent(student,course);
+-        double sum=0;
+-        double number=0;
+-        for (Grade grade:gradeOfStudent) {
+-            sum+=grade.getGrade();
++        Student student = studentService.getStudentByRegistryNumber(registryNumber);
++        Course course = courseRepo.findByID(courseID);
++        List<Grade> gradeOfStudent = courseRepo.getAllGradesOfAStudent(student, course);
++        double sum = 0;
++        double number = 0;
++        for (Grade grade : gradeOfStudent) {
++            sum += grade.getGrade();
+             number++;
+         }
+-        return sum/number;
++        return sum / number;
+     }
+-
+ }
+Index: src/main/java/com/example/demoMPI/controllers/CourseController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.controllers;\r\n\r\nimport com.example.demoMPI.services.CourseService;\r\nimport io.swagger.v3.oas.annotations.Operation;\r\nimport io.swagger.v3.oas.annotations.tags.Tag;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RequestParam;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\n@RestController\r\n@RequestMapping(\"/api/v1/Grades\")\r\n@RequiredArgsConstructor\r\n@Tag(name=\"Grades\",description=\"Just Grades\")\r\npublic class CourseController {\r\n    private final CourseService courseService;\r\n\r\n    @Operation(summary=\"Get all courses\")\r\n    @GetMapping(\"/getCourses\")\r\n    public void listCourses() {\r\n        courseService.getAllCourses().forEach(System.out::println);\r\n    }\r\n\r\n    @Operation(summary=\"Get a students average on a course\")\r\n    @GetMapping(\"/getAverage\")\r\n    public void getAverage(@RequestParam long courseID,@RequestParam String registryNumber) {\r\n        courseService.calculateAverage(courseID,registryNumber);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/controllers/CourseController.java b/src/main/java/com/example/demoMPI/controllers/CourseController.java
+--- a/src/main/java/com/example/demoMPI/controllers/CourseController.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/controllers/CourseController.java	(date 1746020998641)
+@@ -9,22 +9,36 @@
+ import org.springframework.web.bind.annotation.RequestParam;
+ import org.springframework.web.bind.annotation.RestController;
+ 
++/**
++ * Controller for handling grade-related endpoints.
++ */
+ @RestController
+ @RequestMapping("/api/v1/Grades")
+ @RequiredArgsConstructor
+-@Tag(name="Grades",description="Just Grades")
++@Tag(name = "Grades", description = "Just Grades")
+ public class CourseController {
++
+     private final CourseService courseService;
+ 
+-    @Operation(summary="Get all courses")
++    /**
++     * Lists all available courses by printing them to the console.
++     * Intended for development/testing purposes.
++     */
++    @Operation(summary = "Get all courses")
+     @GetMapping("/getCourses")
+     public void listCourses() {
+         courseService.getAllCourses().forEach(System.out::println);
+     }
+ 
+-    @Operation(summary="Get a students average on a course")
++    /**
++     * Calculates and logs a student's average for a given course.
++     *
++     * @param courseID       the ID of the course
++     * @param registryNumber the student's registry number
++     */
++    @Operation(summary = "Get a student's average on a course")
+     @GetMapping("/getAverage")
+-    public void getAverage(@RequestParam long courseID,@RequestParam String registryNumber) {
+-        courseService.calculateAverage(courseID,registryNumber);
++    public void getAverage(@RequestParam long courseID, @RequestParam String registryNumber) {
++        courseService.calculateAverage(courseID, registryNumber);
+     }
+ }
+Index: src/main/java/com/example/demoMPI/controllers/ProfessorController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.controllers;\r\n\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.Student;\r\nimport com.example.demoMPI.dtos.ProfessorDTO;\r\nimport com.example.demoMPI.dtos.StudentDTO;\r\nimport com.example.demoMPI.services.ProfessorService;\r\nimport io.swagger.v3.oas.annotations.Operation;\r\nimport io.swagger.v3.oas.annotations.tags.Tag;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.List;\r\n\r\n@RestController\r\n@RequestMapping(\"/api/v1/Professors\")\r\n@RequiredArgsConstructor\r\n@Tag(name=\"Professors\",description=\"Shows all the things you can do with professors\")\r\npublic class ProfessorController {\r\n    private final ProfessorService professorService;\r\n    @Operation(summary = \"Get All Professors\")\r\n    @GetMapping(\"/allProfessors\")\r\n    public List<Professor> getAllProfessors(){\r\n\r\n        return professorService.getAllProfessors();\r\n    }\r\n\r\n    @Operation(summary=\"Create a professor\")\r\n    @PostMapping(\"/createProfessor\")\r\n    public void createProfessor(@RequestBody ProfessorDTO professorDTO){\r\n        professorService.createProfessor(professorDTO);\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/controllers/ProfessorController.java b/src/main/java/com/example/demoMPI/controllers/ProfessorController.java
+--- a/src/main/java/com/example/demoMPI/controllers/ProfessorController.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/controllers/ProfessorController.java	(date 1746020998649)
+@@ -12,24 +12,36 @@
+ 
+ import java.util.List;
+ 
++/**
++ * Controller for managing professor-related operations.
++ */
+ @RestController
+ @RequestMapping("/api/v1/Professors")
+ @RequiredArgsConstructor
+-@Tag(name="Professors",description="Shows all the things you can do with professors")
++@Tag(name = "Professors", description = "Shows all the things you can do with professors")
+ public class ProfessorController {
++
+     private final ProfessorService professorService;
++
++    /**
++     * Retrieves a list of all professors in the system.
++     *
++     * @return list of all professors
++     */
+     @Operation(summary = "Get All Professors")
+     @GetMapping("/allProfessors")
+-    public List<Professor> getAllProfessors(){
+-
++    public List<Professor> getAllProfessors() {
+         return professorService.getAllProfessors();
+     }
+ 
+-    @Operation(summary="Create a professor")
++    /**
++     * Creates a new professor entry from a ProfessorDTO object.
++     *
++     * @param professorDTO the professor data transfer object
++     */
++    @Operation(summary = "Create a professor")
+     @PostMapping("/createProfessor")
+-    public void createProfessor(@RequestBody ProfessorDTO professorDTO){
++    public void createProfessor(@RequestBody ProfessorDTO professorDTO) {
+         professorService.createProfessor(professorDTO);
+     }
+-
+-
+ }
+Index: target/classes/static/dashboard.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!--<!DOCTYPE html>-->\r\n<!--<html>-->\r\n<!--<head>-->\r\n<!--    <title>Dashboard</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"checkAuth()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"main\">-->\r\n<!--    <h1>Welcome to the Dashboard</h1>-->\r\n<!--    <p>Use the side menu to navigate.</p>-->\r\n<!--</div>-->\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script src=\"js/dashboard.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n\r\n<!--<!DOCTYPE html>-->\r\n<!--<html lang=\"en\">-->\r\n<!--<head>-->\r\n<!--    <title>Dashboard</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"loadDashboard()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"main\">-->\r\n<!--    <h1>Welcome to the Dashboard</h1>-->\r\n<!--    <p>Use the side menu to navigate.</p>-->\r\n\r\n<!--    <div id=\"dynamic-form-container\"></div>-->\r\n<!--</div>-->\r\n\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script>-->\r\n<!--    async function loadDashboard() {-->\r\n<!--        checkAuth(); // already in your code-->\r\n<!--        const response = await fetch(\"/api/v1/auth/me\"); // or whatever endpoint gives user info-->\r\n<!--        if (!response.ok) return;-->\r\n\r\n<!--        const user = await response.json();-->\r\n<!--        const container = document.getElementById(\"dynamic-form-container\");-->\r\n\r\n<!--        if (user.role === \"STUDENT\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--            <h2>Complete Your Student Profile</h2>-->\r\n<!--            <form id=\"studentForm\">-->\r\n<!--                Registry Number: <input type=\"text\" name=\"registryNumber\" required><br>-->\r\n<!--                Year: <input type=\"text\" name=\"year\" required><br>-->\r\n<!--                Active Year: <input type=\"checkbox\" name=\"activeYear\"><br>-->\r\n<!--                <button type=\"submit\">Submit</button>-->\r\n<!--            </form>-->\r\n<!--        `;-->\r\n<!--            document.getElementById(\"studentForm\").addEventListener(\"submit\", async function(e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const body = {-->\r\n<!--                    registryNumber: form.registryNumber.value,-->\r\n<!--                    year: form.year.value,-->\r\n<!--                    activeYear: form.activeYear.checked-->\r\n<!--                };-->\r\n<!--                const res = await fetch(\"/api/v1/Students/createStudent\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    headers: { \"Content-Type\": \"application/json\" },-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Student added!\" : \"Failed to add student.\");-->\r\n<!--            });-->\r\n<!--        } else if (user.role === \"PROFESSOR\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--            <h2>Complete Your Professor Profile</h2>-->\r\n<!--            <form id=\"profForm\">-->\r\n<!--                Courses (comma-separated): <input type=\"text\" name=\"courses\"><br>-->\r\n<!--                <button type=\"submit\">Submit</button>-->\r\n<!--            </form>-->\r\n<!--        `;-->\r\n<!--            document.getElementById(\"profForm\").addEventListener(\"submit\", async function(e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const courses = form.courses.value.split(',').map(name => ({ name: name.trim() }));-->\r\n<!--                const body = { courses };-->\r\n<!--                const res = await fetch(\"/api/v1/Professors/createProfessor\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    headers: { \"Content-Type\": \"application/json\" },-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Professor added!\" : \"Failed to add professor.\");-->\r\n<!--            });-->\r\n<!--        }-->\r\n<!--    }-->\r\n<!--</script>-->\r\n<!--<script src=\"js/dashboard.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n\r\n<!--<!DOCTYPE html>-->\r\n<!--<html lang=\"en\">-->\r\n<!--<head>-->\r\n<!--    <title>Dashboard</title>-->\r\n<!--    <link rel=\"stylesheet\" href=\"css/style.css\">-->\r\n<!--</head>-->\r\n<!--<body onload=\"loadDashboard()\">-->\r\n<!--<div class=\"side-menu\">-->\r\n<!--    <a href=\"dashboard.html\">Dashboard</a>-->\r\n<!--    <a href=\"students.html\">Students</a>-->\r\n<!--    <a href=\"teachers.html\">Teachers</a>-->\r\n<!--    <a href=\"grades.html\">Gradebook</a>-->\r\n<!--    <a href=\"#\" onclick=\"logout()\">Logout</a>-->\r\n<!--</div>-->\r\n\r\n<!--<div class=\"main\">-->\r\n<!--    <h1>Welcome to the Dashboard</h1>-->\r\n<!--    <p>Use the side menu to navigate.</p>-->\r\n<!--    <div id=\"dynamic-form-container\"></div>-->\r\n<!--</div>-->\r\n\r\n<!--<script src=\"js/auth.js\"></script>-->\r\n<!--<script>-->\r\n<!--    function loadDashboard() {-->\r\n<!--        checkAuth();-->\r\n\r\n<!--        const role = localStorage.getItem(\"role\");-->\r\n<!--        const container = document.getElementById(\"dynamic-form-container\");-->\r\n\r\n<!--        if (role === \"STUDENT\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--                <h2>Complete Your Student Profile</h2>-->\r\n<!--                <form id=\"studentForm\">-->\r\n<!--                    Registry Number: <input type=\"text\" name=\"registryNumber\" required><br>-->\r\n<!--                    Year: <input type=\"text\" name=\"year\" required><br>-->\r\n<!--                    Active Year: <input type=\"checkbox\" name=\"activeYear\"><br>-->\r\n<!--                    <button type=\"submit\">Submit</button>-->\r\n<!--                </form>-->\r\n<!--            `;-->\r\n<!--            document.getElementById(\"studentForm\").addEventListener(\"submit\", async function (e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const body = {-->\r\n<!--                    registryNumber: form.registryNumber.value,-->\r\n<!--                    year: form.year.value,-->\r\n<!--                    activeYear: form.activeYear.checked-->\r\n<!--                };-->\r\n<!--                const res = await authFetch(\"http://localhost:8080/api/v1/Students/createStudent\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Student added!\" : \"Failed to add student.\");-->\r\n<!--            });-->\r\n\r\n<!--        } else if (role === \"PROFESSOR\") {-->\r\n<!--            container.innerHTML = `-->\r\n<!--                <h2>Complete Your Professor Profile</h2>-->\r\n<!--                <form id=\"profForm\">-->\r\n<!--                    Courses (comma-separated): <input type=\"text\" name=\"courses\"><br>-->\r\n<!--                    <button type=\"submit\">Submit</button>-->\r\n<!--                </form>-->\r\n<!--            `;-->\r\n<!--            document.getElementById(\"profForm\").addEventListener(\"submit\", async function (e) {-->\r\n<!--                e.preventDefault();-->\r\n<!--                const form = e.target;-->\r\n<!--                const courses = form.courses.value.split(',').map(name => ({ name: name.trim() }));-->\r\n<!--                const body = { courses };-->\r\n<!--                const res = await authFetch(\"http://localhost:8080/api/v1/Professors/createProfessor\", {-->\r\n<!--                    method: \"POST\",-->\r\n<!--                    body: JSON.stringify(body)-->\r\n<!--                });-->\r\n<!--                alert(res.ok ? \"Professor added!\" : \"Failed to add professor.\");-->\r\n<!--            });-->\r\n<!--        } else {-->\r\n<!--            container.innerHTML = `<p>Unknown role. Please contact support.</p>`;-->\r\n<!--        }-->\r\n<!--    }-->\r\n<!--</script>-->\r\n<!--<script src=\"js/dashboard.js\"></script>-->\r\n<!--</body>-->\r\n<!--</html>-->\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <title>Dashboard</title>\r\n    <link rel=\"stylesheet\" href=\"css/style.css\">\r\n</head>\r\n<body onload=\"checkAuth()\">\r\n<div class=\"side-menu\">\r\n    <a href=\"dashboard.html\">Dashboard</a>\r\n    <a href=\"students.html\">Students</a>\r\n    <a href=\"teachers.html\">Teachers</a>\r\n    <a href=\"grades.html\">Gradebook</a>\r\n   <!-- <a href=\"professor_register.html\">prof</a> -->\r\n    <!--<a href=\"manual_add.html\">Add to database</a> -->\r\n    <!-- Manual Add link will be injected here for professors -->\r\n    <a href=\"#\" onclick=\"logout()\">Logout</a>\r\n</div>\r\n<div class=\"main\">\r\n    <h1>Welcome to the Dashboard</h1>\r\n    <p>Use the side menu to navigate.</p>\r\n</div>\r\n\r\n<script>\r\n    document.addEventListener(\"DOMContentLoaded\", () => {\r\n        const role = localStorage.getItem(\"role\");\r\n\r\n// Show extra menu item for professors\r\n        if (role === \"PROFESSOR\") {\r\n            const menu = document.getElementById(\"side-menu\");\r\n            const manualLink = document.createElement(\"a\");\r\n            manualLink.href = \"manual_add.html\";\r\n            manualLink.textContent = \"Manual Add\";\r\n            menu.insertBefore(manualLink, menu.children[menu.children.length - 1]); // before Logout\r\n        }\r\n    });\r\n</script>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/static/dashboard.html b/target/classes/static/dashboard.html
+--- a/target/classes/static/dashboard.html	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/target/classes/static/dashboard.html	(date 1746020998659)
+@@ -197,6 +197,7 @@
+     <a href="students.html">Students</a>
+     <a href="teachers.html">Teachers</a>
+     <a href="grades.html">Gradebook</a>
++    <a href="professor_register.html">prof</a>
+    <!-- <a href="professor_register.html">prof</a> -->
+     <!--<a href="manual_add.html">Add to database</a> -->
+     <!-- Manual Add link will be injected here for professors -->
+Index: src/main/java/com/example/demoMPI/Class.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\npublic enum Class {\r\n    A,\r\n    B,\r\n    C,\r\n    D,\r\n    E\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/Class.java b/src/main/java/com/example/demoMPI/Class.java
+--- a/src/main/java/com/example/demoMPI/Class.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/Class.java	(date 1746020998669)
+@@ -1,9 +1,35 @@
+ package com.example.demoMPI;
+ 
++/**
++ * Enum representing the different class groups available for students.
++ * <p>
++ * This enum defines the class groups that students can be assigned to, typically
++ * for organization or categorization purposes.
++ * </p>
++ */
+ public enum Class {
++    /**
++     * Class group A
++     */
+     A,
++
++    /**
++     * Class group B
++     */
+     B,
++
++    /**
++     * Class group C
++     */
+     C,
++
++    /**
++     * Class group D
++     */
+     D,
++
++    /**
++     * Class group E
++     */
+     E
+ }
+Index: src/main/java/com/example/demoMPI/DemoMpiApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\nimport org.springframework.boot.SpringApplication;\r\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\r\n\r\n@SpringBootApplication\r\npublic class DemoMpiApplication {\r\n\r\n\tpublic static void main(String[] args) {\r\n\t\tSpringApplication.run(DemoMpiApplication.class, args);\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/DemoMpiApplication.java b/src/main/java/com/example/demoMPI/DemoMpiApplication.java
+--- a/src/main/java/com/example/demoMPI/DemoMpiApplication.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/DemoMpiApplication.java	(date 1746020998678)
+@@ -3,9 +3,21 @@
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
++/**
++ * The entry point for the Spring Boot application.
++ * <p>
++ * This class contains the main method which starts the Spring Boot application
++ * and initializes the Spring context.
++ * </p>
++ */
+ @SpringBootApplication
+ public class DemoMpiApplication {
+ 
++	/**
++	 * The main method that starts the Spring Boot application.
++	 *
++	 * @param args Command-line arguments passed during application startup.
++	 */
+ 	public static void main(String[] args) {
+ 		SpringApplication.run(DemoMpiApplication.class, args);
+ 	}
+Index: src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.services;\r\n\r\nimport com.example.demoMPI.User;\r\nimport com.example.demoMPI.repos.UserRepo;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.security.core.userdetails.UserDetails;\r\nimport org.springframework.security.core.userdetails.UserDetailsService;\r\nimport org.springframework.security.core.userdetails.UsernameNotFoundException;\r\nimport org.springframework.stereotype.Service;\r\nimport org.springframework.security.core.authority.SimpleGrantedAuthority;\r\n\r\nimport java.util.Collections;\r\n\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class UserDetailsServiceImpl implements UserDetailsService {\r\n\r\n    private final UserRepo userRepo;\r\n\r\n    @Override\r\n    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {\r\n        User user = userRepo.findByEmail(email)\r\n                .orElseThrow(() -> new UsernameNotFoundException(\"User not found\"));\r\n\r\n        return new org.springframework.security.core.userdetails.User(\r\n                user.getEmail(),\r\n                user.getPassword(),\r\n                Collections.singleton(new SimpleGrantedAuthority(user.getRole().name()))\r\n        );\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java b/src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java
+--- a/src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java	(date 1746020998687)
+@@ -11,12 +11,31 @@
+ 
+ import java.util.Collections;
+ 
++/**
++ * Implementation of the {@link UserDetailsService} interface that loads user details from the database
++ * for authentication and authorization purposes.
++ * <p>
++ * This service interacts with the {@link UserRepo} to fetch user information based on email,
++ * and then returns the corresponding {@link UserDetails} object used by Spring Security.
++ * </p>
++ */
+ @Service
+ @RequiredArgsConstructor
+ public class UserDetailsServiceImpl implements UserDetailsService {
+ 
+     private final UserRepo userRepo;
+ 
++    /**
++     * Loads a user by their email address for authentication and authorization.
++     * <p>
++     * Retrieves the user from the repository and creates a Spring Security {@link UserDetails} object
++     * containing the user's email, password, and role.
++     * </p>
++     *
++     * @param email the email of the user to load
++     * @return the {@link UserDetails} object representing the user
++     * @throws UsernameNotFoundException if no user with the given email is found
++     */
+     @Override
+     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+         User user = userRepo.findByEmail(email)
+@@ -28,4 +47,4 @@
+                 Collections.singleton(new SimpleGrantedAuthority(user.getRole().name()))
+         );
+     }
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Data;\r\nimport lombok.EqualsAndHashCode;\r\nimport lombok.NoArgsConstructor;\r\n\r\nimport java.util.List;\r\n\r\n@EqualsAndHashCode(callSuper = true)\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\npublic class ProfessorDTO extends UserDTO{\r\n    private List<Course> courses;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java b/src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java
+--- a/src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java	(date 1746020998695)
+@@ -8,10 +8,18 @@
+ 
+ import java.util.List;
+ 
++/**
++ * Data Transfer Object for Professor entity.
++ * Extends from UserDTO and includes the courses associated with the professor.
++ */
+ @EqualsAndHashCode(callSuper = true)
+ @Data
+ @AllArgsConstructor
+ @NoArgsConstructor
+-public class ProfessorDTO extends UserDTO{
++public class ProfessorDTO extends UserDTO {
++
++    /**
++     * List of courses associated with the professor.
++     */
+     private List<Course> courses;
+ }
+Index: src/main/java/com/example/demoMPI/dtos/CourseDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.Student;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Builder;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\nimport java.util.List;\r\n@Builder\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\npublic class CourseDTO {\r\n    private String name;\r\n    private List<Professor> professors;\r\n    private List<Student> students;\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/CourseDTO.java b/src/main/java/com/example/demoMPI/dtos/CourseDTO.java
+--- a/src/main/java/com/example/demoMPI/dtos/CourseDTO.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/CourseDTO.java	(date 1746020998702)
+@@ -6,16 +6,31 @@
+ import lombok.Builder;
+ import lombok.Data;
+ import lombok.NoArgsConstructor;
+-import org.springframework.data.jpa.repository.JpaRepository;
+ 
+ import java.util.List;
++
++/**
++ * Data Transfer Object for Course entity.
++ * Contains the basic structure for creating or transferring course-related data.
++ */
+ @Builder
+ @Data
+ @AllArgsConstructor
+ @NoArgsConstructor
+ public class CourseDTO {
++
++    /**
++     * The name of the course.
++     */
+     private String name;
++
++    /**
++     * List of professors associated with the course.
++     */
+     private List<Professor> professors;
++
++    /**
++     * List of students enrolled in the course.
++     */
+     private List<Student> students;
+-
+ }
+Index: src/main/java/com/example/demoMPI/dtos/StudentDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport com.example.demoMPI.YearOfClass;\r\nimport lombok.*;\r\n@EqualsAndHashCode(callSuper = true)\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\npublic class StudentDTO extends UserDTO {\r\n    private String registryNumber;\r\n    private YearOfClass year;\r\n    private boolean activeYear;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/StudentDTO.java b/src/main/java/com/example/demoMPI/dtos/StudentDTO.java
+--- a/src/main/java/com/example/demoMPI/dtos/StudentDTO.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/StudentDTO.java	(date 1746020998711)
+@@ -2,12 +2,29 @@
+ 
+ import com.example.demoMPI.YearOfClass;
+ import lombok.*;
++
++/**
++ * Data Transfer Object for Student entity.
++ * Extends from UserDTO and includes the student's registry number, year of study, and active status.
++ */
+ @EqualsAndHashCode(callSuper = true)
+ @Data
+ @AllArgsConstructor
+ @NoArgsConstructor
+ public class StudentDTO extends UserDTO {
++
++    /**
++     * The unique registry number assigned to the student.
++     */
+     private String registryNumber;
++
++    /**
++     * The year of study for the student.
++     */
+     private YearOfClass year;
++
++    /**
++     * Indicates whether the student is in an active year of study.
++     */
+     private boolean activeYear;
+ }
+Index: src/main/java/com/example/demoMPI/repos/UserRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.repos;\r\n\r\nimport com.example.demoMPI.User;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\nimport java.util.Optional;\r\n\r\npublic interface UserRepo extends JpaRepository<User, Long> {\r\n    Optional<User> findByEmail(String email);\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/repos/UserRepo.java b/src/main/java/com/example/demoMPI/repos/UserRepo.java
+--- a/src/main/java/com/example/demoMPI/repos/UserRepo.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/repos/UserRepo.java	(date 1746020998722)
+@@ -5,6 +5,17 @@
+ 
+ import java.util.Optional;
+ 
++/**
++ * Repository interface for {@link User} entity.
++ * Provides methods to query user data from the database.
++ */
+ public interface UserRepo extends JpaRepository<User, Long> {
++
++    /**
++     * Finds a user by their email.
++     *
++     * @param email the email of the user
++     * @return an {@link Optional} containing the user with the given email, if found
++     */
+     Optional<User> findByEmail(String email);
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/example/demoMPI/dtos/GradeDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI.dtos;\r\n\r\nimport com.example.demoMPI.Course;\r\nimport com.example.demoMPI.Professor;\r\nimport com.example.demoMPI.Student;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Builder;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\n\r\nimport java.util.Date;\r\n@Builder\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\npublic class GradeDTO {\r\n    private Professor assigner;\r\n    private Student assignee;\r\n    private Date date;\r\n    private double grade;\r\n    //private Course course;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/dtos/GradeDTO.java b/src/main/java/com/example/demoMPI/dtos/GradeDTO.java
+--- a/src/main/java/com/example/demoMPI/dtos/GradeDTO.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/dtos/GradeDTO.java	(date 1746020998730)
+@@ -9,14 +9,39 @@
+ import lombok.NoArgsConstructor;
+ 
+ import java.util.Date;
++
++/**
++ * Data Transfer Object for Grade entity.
++ * Used to transfer grade data between layers.
++ */
+ @Builder
+ @Data
+ @AllArgsConstructor
+ @NoArgsConstructor
+ public class GradeDTO {
++
++    /**
++     * The professor who assigned the grade.
++     */
+     private Professor assigner;
++
++    /**
++     * The student who received the grade.
++     */
+     private Student assignee;
++
++    /**
++     * The date the grade was assigned.
++     */
+     private Date date;
++
++    /**
++     * The numeric value of the grade.
++     */
+     private double grade;
+-    //private Course course;
++
++     /**
++      * The course to which this grade belongs.
++      */
++    private Course course;
+ }
+Index: src/main/java/com/example/demoMPI/Course.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demoMPI;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.*;\r\nimport java.util.List;\r\n\r\n@Data\r\n@Entity\r\n@Table(name=\"courses\")\r\npublic class Course {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.AUTO)\r\n    private Long id;\r\n    private String name;\r\n    @ManyToMany(mappedBy = \"courses\")\r\n    private List<Professor> professors;\r\n    @ManyToMany(mappedBy = \"courseList\")\r\n    private List<Student> students;\r\n    @OneToMany(mappedBy = \"course\")\r\n    private List<Grade> gradesPerStudent;\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/demoMPI/Course.java b/src/main/java/com/example/demoMPI/Course.java
+--- a/src/main/java/com/example/demoMPI/Course.java	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/src/main/java/com/example/demoMPI/Course.java	(date 1746020998738)
+@@ -4,19 +4,48 @@
+ import lombok.*;
+ import java.util.List;
+ 
++/**
++ * Entity class representing a course.
++ * <p>
++ * This class is used to store information about a specific course, including its name,
++ * the professors teaching it, the students enrolled in it, and the grades assigned to students in the course.
++ * </p>
++ */
+ @Data
+ @Entity
+ @Table(name="courses")
+ public class Course {
++
++    /**
++     * The unique identifier for the course.
++     */
+     @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+     private Long id;
++
++    /**
++     * The name of the course.
++     */
+     private String name;
++
++    /**
++     * The list of professors teaching this course.
++     * This is a bidirectional relationship with the {@link Professor} entity.
++     */
+     @ManyToMany(mappedBy = "courses")
+     private List<Professor> professors;
++
++    /**
++     * The list of students enrolled in the course.
++     * This is a bidirectional relationship with the {@link Student} entity.
++     */
+     @ManyToMany(mappedBy = "courseList")
+     private List<Student> students;
++
++    /**
++     * The list of grades assigned to students in this course.
++     * This is a one-to-many relationship with the {@link Grade} entity.
++     */
+     @OneToMany(mappedBy = "course")
+     private List<Grade> gradesPerStudent;
+ }
+-
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d8a59be6-f9a3-4e37-84f6-9c8eb1681229\" name=\"Changes\" comment=\"GM-15&#10;Set up base layout\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/html/js/main.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/html/js/main.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"HTML File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"GM-14\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"PHP\" />\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 1\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2wJeKCG5K7WEBhn1cALQv6V0YRA\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"Spring Boot.DemoMpiApplication.executor\": \"Run\",\r\n    \"dart.analysis.tool.window.visible\": \"false\",\r\n    \"git-widget-placeholder\": \"GM-15\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"show.migrate.to.gradle.popup\": \"false\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"DemoMpiApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"demoMPI\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.demoMPI.DemoMpiApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d8a59be6-f9a3-4e37-84f6-9c8eb1681229\" name=\"Changes\" comment=\"\" />\r\n      <created>1745764038086</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1745764038086</updated>\r\n      <workItem from=\"1745764039333\" duration=\"9388000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"GM-39&#10;Implemented authentication\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745768808063</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745768808063</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"GM-40&#10;Generated JWT\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745769795861</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745769795861</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"GM-57&#10;CORS Configuration\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745771364659</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745771364659</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"GM-14&#10;Set up HTML project structure\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745776090044</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745776090044</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"GM-15&#10;Set up base layout\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745776467532</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745776467532</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/GM-15\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"GM-39&#10;Implemented authentication\" />\r\n    <MESSAGE value=\"GM-40&#10;Generated JWT\" />\r\n    <MESSAGE value=\"GM-57&#10;CORS Configuration\" />\r\n    <MESSAGE value=\"GM-14&#10;Set up HTML project structure\" />\r\n    <MESSAGE value=\"GM-15&#10;Set up base layout\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"GM-15&#10;Set up base layout\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2d25a769f615d372c4e52f624aa4879491671937)
++++ b/.idea/workspace.xml	(date 1746020998749)
+@@ -4,8 +4,55 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-15&#10;Set up base layout">
+-      <change beforePath="$PROJECT_DIR$/src/html/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/html/js/main.js" afterDir="false" />
++    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-16&#10;Create navigation between scenes">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI.zip" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Class.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Course.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/DemoMpiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/DemoMpiApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Grade.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Professor.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Role.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/Student.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/User.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/YearOfClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/YearOfClass.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/config/CorsConfig.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/config/SecurityConfig.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/AuthController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/CourseController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/GradeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/GradeController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/ProfessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/ProfessorController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/controllers/StudentController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/CourseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/CourseDTO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/GradeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/GradeDTO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/LoginRequest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/ProfessorDTO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/RegisterRequest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/StudentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/StudentDTO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/dtos/UserDTO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/CourseMapper.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/CourseMapperImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/GradeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/GradeMapper.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/GradeMapperImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/ProfessorMapper.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/ProfessorMapperImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/StudentMapper.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/mappers/StudentMapperImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/CourseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/CourseRepo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/GradeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/GradeRepo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/ProfessorRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/ProfessorRepo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/StudentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/StudentRepo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/repos/UserRepo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/CourseService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/GradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/GradeService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/JwtService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/ProfessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/ProfessorService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/StudentService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demoMPI/services/UserDetailsServiceImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demoMPI/config/CorsConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demoMPI/config/CorsConfig$1.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demoMPI/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demoMPI/config/SecurityConfig.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demoMPI/controllers/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demoMPI/controllers/AuthController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/dashboard.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,24 +67,24 @@
+       <list>
+         <option value="Interface" />
+         <option value="Class" />
+-        <option value="HTML File" />
+         <option value="CSS File" />
+         <option value="JavaScript File" />
++        <option value="HTML File" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="GM-14" />
++        <entry key="$PROJECT_DIR$" value="GM-16" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 1
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 1
++}</component>
+   <component name="ProjectId" id="2wJeKCG5K7WEBhn1cALQv6V0YRA" />
+   <component name="ProjectLevelVcsManager">
+     <ConfirmationsSetting value="1" id="Add" />
+@@ -57,7 +104,7 @@
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "Spring Boot.DemoMpiApplication.executor": "Run",
+     "dart.analysis.tool.window.visible": "false",
+-    "git-widget-placeholder": "GM-15",
++    "git-widget-placeholder": "raluk",
+     "kotlin-language-version-configured": "true",
+     "list.type.of.created.stylesheet": "CSS",
+     "node.js.detected.package.eslint": "true",
+@@ -94,7 +141,9 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1745764038086</updated>
+-      <workItem from="1745764039333" duration="9388000" />
++      <workItem from="1745764039333" duration="9668000" />
++      <workItem from="1745962209800" duration="993000" />
++      <workItem from="1746006930097" duration="11506000" />
+     </task>
+     <task id="LOCAL-00001" summary="GM-39&#10;Implemented authentication">
+       <option name="closed" value="true" />
+@@ -136,7 +185,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1745776467532</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="GM-16&#10;Create navigation between scenes">
++      <option name="closed" value="true" />
++      <created>1745776601566</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1745776601566</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -153,7 +210,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="origin/GM-15" />
++                        <option value="origin/GM-16" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -171,6 +228,7 @@
+     <MESSAGE value="GM-57&#10;CORS Configuration" />
+     <MESSAGE value="GM-14&#10;Set up HTML project structure" />
+     <MESSAGE value="GM-15&#10;Set up base layout" />
+-    <option name="LAST_COMMIT_MESSAGE" value="GM-15&#10;Set up base layout" />
++    <MESSAGE value="GM-16&#10;Create navigation between scenes" />
++    <option name="LAST_COMMIT_MESSAGE" value="GM-16&#10;Create navigation between scenes" />
+   </component>
+ </project>
+\ No newline at end of file
