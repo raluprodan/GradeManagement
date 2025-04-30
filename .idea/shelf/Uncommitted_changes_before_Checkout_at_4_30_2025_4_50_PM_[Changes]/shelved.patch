@@ -1,0 +1,190 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d8a59be6-f9a3-4e37-84f6-9c8eb1681229\" name=\"Changes\" comment=\"GM-15&#10;Set up base layout\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/html/js/main.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/html/js/main.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"HTML File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"GM-14\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"PHP\" />\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 1\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2wJeKCG5K7WEBhn1cALQv6V0YRA\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"Spring Boot.DemoMpiApplication.executor\": \"Run\",\r\n    \"dart.analysis.tool.window.visible\": \"false\",\r\n    \"git-widget-placeholder\": \"GM-15\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"show.migrate.to.gradle.popup\": \"false\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"DemoMpiApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"demoMPI\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.demoMPI.DemoMpiApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d8a59be6-f9a3-4e37-84f6-9c8eb1681229\" name=\"Changes\" comment=\"\" />\r\n      <created>1745764038086</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1745764038086</updated>\r\n      <workItem from=\"1745764039333\" duration=\"9388000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"GM-39&#10;Implemented authentication\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745768808063</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745768808063</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"GM-40&#10;Generated JWT\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745769795861</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745769795861</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"GM-57&#10;CORS Configuration\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745771364659</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745771364659</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"GM-14&#10;Set up HTML project structure\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745776090044</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745776090044</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"GM-15&#10;Set up base layout\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745776467532</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745776467532</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/GM-15\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"GM-39&#10;Implemented authentication\" />\r\n    <MESSAGE value=\"GM-40&#10;Generated JWT\" />\r\n    <MESSAGE value=\"GM-57&#10;CORS Configuration\" />\r\n    <MESSAGE value=\"GM-14&#10;Set up HTML project structure\" />\r\n    <MESSAGE value=\"GM-15&#10;Set up base layout\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"GM-15&#10;Set up base layout\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/.idea/workspace.xml	(date 1746021033674)
+@@ -4,8 +4,15 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-15&#10;Set up base layout">
+-      <change beforePath="$PROJECT_DIR$/src/html/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/html/js/main.js" afterDir="false" />
++    <list default="true" id="d8a59be6-f9a3-4e37-84f6-9c8eb1681229" name="Changes" comment="GM-19">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dashboard.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/grades.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/teachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/professors.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/students.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/teachers.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/professors.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -34,10 +41,32 @@
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 1
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "alexialazar"
++  }
+ }]]></component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/raluprodan/GradeManagement.git&quot;,
++    &quot;accountId&quot;: &quot;094905c8-d7b8-4fbd-96bb-9eac86e1334d&quot;
++  },
++  &quot;recentNewPullRequestHead&quot;: {
++    &quot;server&quot;: {
++      &quot;useHttp&quot;: false,
++      &quot;host&quot;: &quot;github.com&quot;,
++      &quot;port&quot;: null,
++      &quot;suffix&quot;: null
++    },
++    &quot;owner&quot;: &quot;raluprodan&quot;,
++    &quot;repository&quot;: &quot;GradeManagement&quot;
++  }
++}</component>
++  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 1
++}</component>
+   <component name="ProjectId" id="2wJeKCG5K7WEBhn1cALQv6V0YRA" />
+   <component name="ProjectLevelVcsManager">
+     <ConfirmationsSetting value="1" id="Add" />
+@@ -55,9 +84,10 @@
+     "RequestMappingsPanelWidth0": "75",
+     "RequestMappingsPanelWidth1": "75",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
+     "Spring Boot.DemoMpiApplication.executor": "Run",
+     "dart.analysis.tool.window.visible": "false",
+-    "git-widget-placeholder": "GM-15",
++    "git-widget-placeholder": "GM-19",
+     "kotlin-language-version-configured": "true",
+     "list.type.of.created.stylesheet": "CSS",
+     "node.js.detected.package.eslint": "true",
+@@ -81,8 +111,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
++        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
++        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -95,6 +125,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1745764038086</updated>
+       <workItem from="1745764039333" duration="9388000" />
++      <workItem from="1746019128398" duration="1899000" />
+     </task>
+     <task id="LOCAL-00001" summary="GM-39&#10;Implemented authentication">
+       <option name="closed" value="true" />
+@@ -136,7 +167,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1745776467532</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="GM-19">
++      <option name="closed" value="true" />
++      <created>1746018536309</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1746018536309</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -153,7 +192,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="origin/GM-15" />
++                        <option value="origin/GM-21" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -171,6 +210,7 @@
+     <MESSAGE value="GM-57&#10;CORS Configuration" />
+     <MESSAGE value="GM-14&#10;Set up HTML project structure" />
+     <MESSAGE value="GM-15&#10;Set up base layout" />
+-    <option name="LAST_COMMIT_MESSAGE" value="GM-15&#10;Set up base layout" />
++    <MESSAGE value="GM-19" />
++    <option name="LAST_COMMIT_MESSAGE" value="GM-19" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: target/classes/static/css/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>body {\r\n    font-family: sans-serif;\r\n    margin: 0;\r\n    display: flex;\r\n}\r\n.side-menu {\r\n    width: 200px;\r\n    background: #333;\r\n    color: white;\r\n    padding: 10px;\r\n    height: 100vh;\r\n}\r\n.side-menu a {\r\n    display: block;\r\n    color: white;\r\n    text-decoration: none;\r\n    margin: 10px 0;\r\n}\r\n.main {\r\n    padding: 20px;\r\n    flex-grow: 1;\r\n}\r\n.login-container {\r\n    max-width: 300px;\r\n    margin: 100px auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\ninput {\r\n    margin: 5px 0;\r\n    padding: 8px;\r\n}\r\nbutton {\r\n    padding: 8px;\r\n    margin-top: 10px;\r\n}\r\n.error {\r\n    color: red;\r\n}\r\n.login-container a {\r\n    margin-top: 10px;\r\n    display: block;\r\n    color: #333;\r\n    text-align: center;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/static/css/style.css b/target/classes/static/css/style.css
+--- a/target/classes/static/css/style.css	(revision c8063ce0a5610c0ecdbf80e4dc2a0c98abb16c1b)
++++ b/target/classes/static/css/style.css	(date 1746019143415)
+@@ -5,7 +5,7 @@
+ }
+ .side-menu {
+     width: 200px;
+-    background: #333;
++    background: #7575b8;
+     color: white;
+     padding: 10px;
+     height: 100vh;
+@@ -43,3 +43,39 @@
+     color: #333;
+     text-align: center;
+ }
++table {
++    width: 100%;
++    border-collapse: collapse;
++    margin-top: 20px;
++    font-family: Arial, sans-serif;
++}
++
++table thead {
++    background-color: #c8c8f5;
++    color: white;
++}
++
++table th, table td {
++    border: 1px solid #ddd;
++    padding: 8px;
++    text-align: center;
++}
++
++table tr:nth-child(even) {
++    background-color: #f2f2f2;
++}
++
++table tr:hover {
++    background-color: #ddd;
++}
++
++label {
++    margin-right: 5px;
++    font-weight: bold;
++}
++
++input, select, button {
++    margin: 5px;
++    padding: 5px;
++    border-radius: 5px;
++}
